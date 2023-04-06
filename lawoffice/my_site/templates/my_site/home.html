@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Kancelaria Adwokacka Anna Seferyniak{% endblock %}
+
+
+{% block content %}
+<h1>Strona Główna</h1>
+<section>
+    <div>
+        <a href="{% url 'about_me' %}">O mnie</a>
+    </div>
+    <div>
+        <a href="">Blog</a>
+    </div>
+    <div>
+        <a href="">Sklep</a>
+    </div>
+    <div>
+        <a href="{% url 'contact' %}">Kontakt</a>
+    </div>
+</section>
+{% endblock %}

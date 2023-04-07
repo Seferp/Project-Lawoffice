@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Pozwy{% endblock %}
+
+
+{% block content %}
+<section>
+    <div>{% include 'shop/includes/shop-back-to-home.html' %}</div>
+</section>
+
+<h1>Umowy</h1>
+<section>
+    <p>Pozwy</p>
+    <ul>
+        {% for item in lawsuits %}
+            <li><a href="{% url 'lawsuits-detail' item.slug %}">{{ item.name }}</a></li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}
+

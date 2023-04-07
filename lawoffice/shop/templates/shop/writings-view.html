@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Pozwy{% endblock %}
+
+
+{% block content %}
+<section>
+    <div>{% include 'shop/includes/shop-back-to-home.html' %}</div>
+</section>
+
+<h1>Umowy</h1>
+<section>
+    <p>Pisma</p>
+    <ul>
+        {% for item in writings %}
+            <li><a href="{% url 'writings-detail' item.slug %}">{{ item.name }}</a></li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

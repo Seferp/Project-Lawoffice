@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ item.name }}{% endblock %}
+
+
+{% block content %}
+<section>
+    <div>{% include 'shop/includes/shop-back-to-home.html' %}</div>
+</section>
+
+<h2>{{ item.name }}</h2>
+<section>
+    <div class="container">
+        {% if item.image %}
+            <img src="{{ item.image.url }}" alt="{{ item.name }}">
+        {% endif %}
+
+        <p><b>{{ item.description }}</b></p>
+        <p><b>{{ item.price }} zł</b></p>
+        <button>Dodaj do<br> koszyka</button>
+    </div>
+</section>
+{% endblock %}

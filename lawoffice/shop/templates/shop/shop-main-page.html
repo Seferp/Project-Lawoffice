@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Kontakt{% endblock %}
+{% block title %}Sklep{% endblock %}
 
 
 {% block content %}
@@ -8,18 +8,16 @@
     <div>{% include 'my_site/includes/site-back-to-home.html' %}</div>
 </section>
 
-<h1>Kontakt</h1>
-<h2><p>Contact</p></h2>
+<h1>Sklep</h1>
 <section>
     <div>
-        <p>Email: lawoffice@lawer.com</p>
+        <a href="{% url 'contracts' %}">Umowy</a>
     </div>
     <div>
-        <p>Telefon: 123-456-789</p>
+        <a href="{% url 'lawsuits' %}">Pozwy</a>
     </div>
     <div>
-        <p>Adres: Law 17</p>
+        <a href="{% url 'writings' %}">Pisma</a>
     </div>
 </section>
-
 {% endblock %}

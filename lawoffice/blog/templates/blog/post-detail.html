@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+
+{% block content %}
+    <section>
+        <div>{% include 'blog/includes/blog-back-to-home.html' %}</div>
+    </section>
+
+    <section id="summary">
+        <h2>{{ post.title }}</h2>
+        <div>
+            {% for tag in post_tags %}
+            <span class="tag">{{ tag.caption }}</span>
+            {% endfor %}
+        </div>
+    </section>
+
+
+    <h1>{{ post.title}}</h1>
+    <section id="main-page">
+        {% if post.image %}
+            <img src="" alt="">
+        {% endif %}
+        <main>
+            {{ post.content }}
+        </main>
+    </section>
+
+    <section id="comments">
+        <h2>Komentarze:</h2>
+        <ul>
+            {% for comment in comments %}
+                <li>
+                    <h3>{{ comment.user_name }}</h3>
+                    <p>{{ comment.text|linebreaks }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section id="comment_form">
+        <h2>Twój komentarz!</h2>
+        <div class="container">
+            <form action="{% url 'post-detail' post.slug %}" method="POST">
+                {% csrf_token %}
+                {% for form_field in comment_form %}
+                    <div class="form-control {% if form_field.errors %}{% endif %}">
+                        {{ form_field.label_tag }}
+                        {{ form_field }}
+                        {{ form_field.errors }}
+                    </div>
+                {% endfor %}
+                <button>Zapisz komentarz</button>
+            </form>
+        </div>
+    </section>
+
+{% endblock %}

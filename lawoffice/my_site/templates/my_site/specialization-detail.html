@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ specialization.name }}{% endblock %}
+
+{% block content %}
+    <a href="{% url 'specialization' %}">Specjalizacje</a>
+    <h1>{{ specialization.name }}</h1>
+    {% if specialization.image %}
+        {{ specialization.image }}
+    {% endif %}
+    <p>{{ specialization.description }}</p>
+{% endblock %}
+

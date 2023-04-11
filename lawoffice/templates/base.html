@@ -8,6 +8,56 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+<header id="logo">
+    <a href="{% url 'home' %}">
+        <img src="" alt="Kancelaria Adowkacka Anna Seferyniak">
+    </a>
+    <nav>
+    <button><a href="{% url 'home' %}">STRONA GŁÓWNA</a></button>
+    <button><a href="{% url 'about_me' %}">O MNIE</a></button>
+    <button><a href="{% url 'specialization' %}">SPECJALIZACJE</a></button>
+    <button><a href="{% url 'blog' %}">BLOG</a></button>
+    <button><a href="{% url 'shop' %}">SKLEP</a></button>
+    <button><a href="{% url 'faq' %}">FAQ</a></button>
+    <button><a href="{% url 'contact' %}">KONTAKT</a></button>
+    </nav>
+</header>
 {% block content %}{% endblock %}
+
+
+
+
+<footer>
+    <nav>
+        <div>
+            <h3>Kontakt</h3>
+            <p>bla bla bla</p>
+            <p>bla bla bla</p>
+            <p>bla bla bla</p>
+            <p>bla bla bla</p>
+        </div>
+        <div>
+            <h3>Szybkie linki</h3>
+            <a href="{% url 'home' %}">STRONA GŁÓWNA</a><br>
+            <a href="{% url 'about_me' %}">O MNIE</a><br>
+            <a href="{% url 'specialization' %}">SPECJALIZACJE</a><br>
+            <a href="{% url 'blog' %}">BLOG</a><br>
+            <a href="{% url 'shop' %}">SKLEP</a><br>
+            <a href="{% url 'faq' %}">FAQ</a><br>
+            <a href="{% url 'contact' %}">KONTAKT</a>
+          </div>
+        <div>
+            <h3>Godziny otwarcia:</h3>
+            <p>Pon:</p>
+            <p>Wt:</p>
+            <p>Śr:</p>
+            <p>Czw:</p>
+            <p>Pt:</p>
+            <p>Sob:</p>
+            <p>Nd:</p>
+        </div>
+    </nav>
+</footer>
+
 </body>
 </html>

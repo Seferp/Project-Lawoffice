@@ -8,6 +8,6 @@ urlpatterns = [
     path('pisma/', views.Writings.as_view(), name='writings'),
 
     path('umowy/<slug:slug>', views.ItemDetail.as_view(), name='contract-detail'),
-    path('pozwy/<slug:slug>', views.ItemDetail.as_view(), name='lawsuits-detail'),
-    path('pisma/<slug:slug>', views.ItemDetail.as_view(), name='writings-detail'),
+    path('pozwy/<slug:slug>', views.ItemDetail.as_view(), name='lawsuit-detail'),
+    path('pisma/<slug:slug>', views.ItemDetail.as_view(), name='writing-detail'),
 ]

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Specjalizacje{% endblock %}
+
+
+{% block content %}
+    <h1>Specjalizacje</h1>
+    {% for specialization in specializations %}
+        <li>
+            <a href="{% url 'specialization-detail' specialization.slug %}">
+                {% if specialization.image %}
+                    {{ specialization.image }}
+                {% endif %}
+                {{ specialization.name }}<br>
+                {{ specialization.excerpt }}
+            </a>
+        </li>
+    {% endfor %}
+{% endblock %}
+
+

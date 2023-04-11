@@ -4,22 +4,17 @@
 
 
 {% block content %}
-    <section>
-        <div>{% include 'blog/includes/blog-back-to-home.html' %}</div>
-    </section>
-
     <section id="summary">
-        <h2>{{ post.title }}</h2>
+        <h1>{{ post.title}}</h1>
         <div>
             {% for tag in post_tags %}
             <span class="tag">{{ tag.caption }}</span>
-            {% endfor %}
+            {% endfor %}<br>
+            {{ post.date }}
         </div>
     </section>
 
-
-    <h1>{{ post.title}}</h1>
-    <section id="main-page">
+     <section id="main-page">
         {% if post.image %}
             <img src="" alt="">
         {% endif %}

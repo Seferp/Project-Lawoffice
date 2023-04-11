@@ -4,20 +4,16 @@
 
 
 {% block content %}
-<section>
-    <div>{% include 'my_site/includes/site-back-to-home.html' %}</div>
-</section>
-
-<h1>Sklep</h1>
-<section>
-    <div>
-        <a href="{% url 'contracts' %}">Umowy</a>
-    </div>
-    <div>
-        <a href="{% url 'lawsuits' %}">Pozwy</a>
-    </div>
-    <div>
-        <a href="{% url 'writings' %}">Pisma</a>
-    </div>
-</section>
+    <h1>Sklep</h1>
+    <nav>
+        <div>
+            <a href="{% url 'contracts' %}">Umowy</a>
+        </div>
+        <div>
+            <a href="{% url 'lawsuits' %}">Pozwy</a>
+        </div>
+        <div>
+            <a href="{% url 'writings' %}">Pisma</a>
+        </div>
+    </nav>
 {% endblock %}

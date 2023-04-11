@@ -4,19 +4,19 @@
 
 
 {% block content %}
-<h1>Strona Główna</h1>
+
 <section>
-    <div>
-        <a href="{% url 'about_me' %}">O mnie</a>
-    </div>
-    <div>
-        <a href="{% url 'blog' %}">Blog</a>
-    </div>
-    <div>
-        <a href="{% url 'shop' %}">Sklep</a>
-    </div>
-    <div>
-        <a href="{% url 'contact' %}">Kontakt</a>
-    </div>
+    <h2>Ostatnio dodane posty:</h2>
+    <ul>
+        {% for post in posts %}
+            <li><a href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></li>
+        {% endfor %}
+    </ul>
 </section>
+
+
+<section id="shop">
+    <a href="{% url 'shop' %}"><h2>SKLEP</h2></a>
+</section>
+
 {% endblock %}

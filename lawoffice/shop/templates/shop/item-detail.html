@@ -13,7 +13,11 @@
 
         <p><b>{{ item.description }}</b></p>
         <p><b>{{ item.price }} zł</b></p>
-        <button>Dodaj do<br> koszyka</button>
+        <form method="POST" action="{% url 'add-to-cart' item.slug %}">
+            {% csrf_token %}
+            <input type="submit" value="Dodaj do koszyka">
+        </form>
+        <a href="{% url 'add-to-cart' item.slug %}">Koszyk</a>
     </div>
 </section>
 {% endblock %}

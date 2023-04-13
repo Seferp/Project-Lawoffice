@@ -21,3 +21,10 @@ class Item(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Cart(models.Model):
+    session_id = models.CharField(max_length=200)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+    created_at = models.DateTimeField(auto_now_add=True)

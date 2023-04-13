@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Koszyk{% endblock %}
+
+{% block content %}
+    <h1>Koszyk</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nazwa przedmiotu</th>
+                <th>Ilość</th>
+                <th>Cena</th>
+                <th>Cena całkowita</th>
+                <th>Akcja</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cart_item in cart_items %}
+            <tr>
+                <td>{{ cart_item.item.name }}</td>
+                <td>{{ cart_item.quantity }}</td>
+                <td>{{ cart_item.item.price }}</td>
+                <td>{{ total_price }}</td>
+                <td>
+                    <a href="{% url 'remove-from-cart' cart_item.id %}">Usuń z koszyka</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">Cena całkowita:</td>
+                <td>{{ total_price }}</td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+{% endblock %}

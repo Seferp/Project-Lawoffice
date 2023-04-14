@@ -1,3 +1,5 @@
+{% load static %}
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,13 +8,15 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+    {% block css_files %}{% endblock %}
 </head>
 <body>
-<header id="logo">
+<header id="main-navigation">
     <a href="{% url 'home' %}">
-        <img src="" alt="Kancelaria Adowkacka Anna Seferyniak">
+        <img src="{% static 'images/logo.png' %}" alt="Kancelaria Adowkacka Anna Seferyniak">
     </a>
-    <nav>
+    <nav id="toolbars">
     <button><a href="{% url 'home' %}">STRONA GŁÓWNA</a></button>
     <button><a href="{% url 'about_me' %}">O MNIE</a></button>
     <button><a href="{% url 'specialization' %}">SPECJALIZACJE</a></button>
@@ -24,39 +28,34 @@
 </header>
 {% block content %}{% endblock %}
 
-
-
-
 <footer>
-    <nav>
-        <div>
-            <h3>Kontakt</h3>
-            <p>bla bla bla</p>
-            <p>bla bla bla</p>
-            <p>bla bla bla</p>
-            <p>bla bla bla</p>
-        </div>
-        <div>
-            <h3>Szybkie linki</h3>
-            <a href="{% url 'home' %}">STRONA GŁÓWNA</a><br>
-            <a href="{% url 'about_me' %}">O MNIE</a><br>
-            <a href="{% url 'specialization' %}">SPECJALIZACJE</a><br>
-            <a href="{% url 'blog' %}">BLOG</a><br>
-            <a href="{% url 'shop' %}">SKLEP</a><br>
-            <a href="{% url 'faq' %}">FAQ</a><br>
-            <a href="{% url 'contact' %}">KONTAKT</a>
-          </div>
-        <div>
-            <h3>Godziny otwarcia:</h3>
-            <p>Pon:</p>
-            <p>Wt:</p>
-            <p>Śr:</p>
-            <p>Czw:</p>
-            <p>Pt:</p>
-            <p>Sob:</p>
-            <p>Nd:</p>
-        </div>
-    </nav>
+    <div>
+        <h3>Kontakt</h3>
+        <p>bla bla bla</p>
+        <p>bla bla bla</p>
+        <p>bla bla bla</p>
+        <p>bla bla bla</p>
+    </div>
+    <div>
+        <h3>Szybkie linki</h3>
+        <a href="{% url 'home' %}">STRONA GŁÓWNA</a><br>
+        <a href="{% url 'about_me' %}">O MNIE</a><br>
+        <a href="{% url 'specialization' %}">SPECJALIZACJE</a><br>
+        <a href="{% url 'blog' %}">BLOG</a><br>
+        <a href="{% url 'shop' %}">SKLEP</a><br>
+        <a href="{% url 'faq' %}">FAQ</a><br>
+        <a href="{% url 'contact' %}">KONTAKT</a>
+      </div>
+    <div>
+        <h3>Godziny otwarcia:</h3>
+        <p>Pon:</p>
+        <p>Wt:</p>
+        <p>Śr:</p>
+        <p>Czw:</p>
+        <p>Pt:</p>
+        <p>Sob:</p>
+        <p>Nd:</p>
+    </div>
 </footer>
 
 </body>

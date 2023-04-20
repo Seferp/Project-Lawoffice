@@ -9,7 +9,7 @@
         <li>
             <a href="{% url 'specialization-detail' specialization.slug %}">
                 {% if specialization.image %}
-                    {{ specialization.image }}
+                    <img src="{{ specialization.image.url }}" alt="{{ specialization.name }}">
                 {% endif %}
                 {{ specialization.name }}<br>
                 {{ specialization.excerpt }}

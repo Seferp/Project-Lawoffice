@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, View, DetailView
 from blog.models import Post
+from shop.models import Document
 from django.core.mail import send_mail
 
 from .models import FAQ, Specialization
@@ -9,14 +10,22 @@ from .forms import ContactForm
 # Create your views here.
 
 class Home(View):
-    def get_query_set(self):
+    def get_last_posts(self):
         posts = Post.objects.all().order_by('-date')
-        data = posts[:3]
-        return data
+        return posts[:3]
+    def get_specializations(self):
+        specializations = Specialization.objects.all().order_by('id')
+        return specializations
+    def get_documents(self):
+        documents = Document.objects.all().order_by('id')
+        return documents
+
 
     def get(self, request):
-        data = self.get_query_set()
-        return render(request, 'my_site/home.html', {'posts': data})
+        posts = self.get_last_posts()
+        specializations = self.get_specializations()
+        documents = self.get_documents()
+        return render(request, 'my_site/home.html', {'specializations': specializations, 'posts': posts, 'documents': documents})
 
 def about_me_view(request):
     return render(request, 'my_site/about-me.html')

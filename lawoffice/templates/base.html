@@ -9,16 +9,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'base.css' %}">
-    {% block css_files %}{% endblock %}
+    {% block css_files %}<link rel="stylesheet" href="{% static 'home.css' %}">{% endblock %}
 </head>
 <body>
 <header id="main-navigation">
     <a href="{% url 'home' %}">
         <img src="{% static 'images/logo.png' %}" alt="Kancelaria Adowkacka Anna Seferyniak">
     </a>
-    <nav id="toolbars">
+    <nav>
     <button><a href="{% url 'home' %}">STRONA GŁÓWNA</a></button>
-    <button><a href="{% url 'about_me' %}">O MNIE</a></button>
+    <button><a href="{% url 'about-me' %}">O MNIE</a></button>
     <button><a href="{% url 'specialization' %}">SPECJALIZACJE</a></button>
     <button><a href="{% url 'blog' %}">BLOG</a></button>
     <button><a href="{% url 'shop' %}">SKLEP</a></button>
@@ -39,7 +39,7 @@
     <div>
         <h3>Szybkie linki</h3>
         <a href="{% url 'home' %}">STRONA GŁÓWNA</a><br>
-        <a href="{% url 'about_me' %}">O MNIE</a><br>
+        <a href="{% url 'about-me' %}">O MNIE</a><br>
         <a href="{% url 'specialization' %}">SPECJALIZACJE</a><br>
         <a href="{% url 'blog' %}">BLOG</a><br>
         <a href="{% url 'shop' %}">SKLEP</a><br>

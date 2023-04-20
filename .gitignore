@@ -129,3 +129,5 @@ dmypy.json
 .pyre/
 
 .idea
+
+lawoffice/my_site/static/my_site/images

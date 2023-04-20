@@ -6,18 +6,56 @@
 
 {% block content %}
 
+<section id="about-me">
+    <div>
+        <a href="{% url 'about-me' %}">
+            <h2>O MNIE</h2>
+        </a>
+        <p>
+            „Bycie adwokatem to nie tylko wdrażanie paragrafów w życie i walka na sali sądowej. Świadcząc usługi prawne staram się, by w pierwszej kolejności Klient zrozumiał sytuację w jakiej się znalazł. Dlaczego? Ponieważ jeżeli nie wiemy co się dzieje, nie czujemy się bezpiecznie, a szanse na podjęcie korzystnych decyzji maleją. Dlatego w ramach współpracy staram się cierpliwie i prosto wyjaśnić problem prawny, z jakim Klient się boryka.
+            W prawie niewiele jest sytuacji bez wyjścia, ale by to wyjście znaleźć, najpierw musimy wiedzieć jakie jest nasze położenie i jak do tego doszło. Wtedy znajdziemy rozwiązanie pozwalające poczuć się bezpiecznie.”
+        </p>
+        <a href="{% url 'about-me' %}">
+            <img src="{% static 'my_site/images/podpis.jpg' %}" alt="Adwokat Anna Seferyniak">
+        </a>
+    </div>
+    <img src="{% static 'my_site/images/grim.jpg' %}" alt="o mnie">
+</section>
+
+<section id="specializations">
+    <a href="{% url 'specialization' %}"><h2>SPECJALIZACJE</h2></a>
+    <ul>
+        {% for specialization in specializations %}
+            <li>
+                <article class="specialization">
+                    <a href="{% url 'specialization-detail' specialization.slug %}">
+                        <div class="specialization__content">
+                            <h3>{{ specialization.name }}</h3>
+                        </div>
+                        {% if specialization.image %}
+                            <img src="{{ specialization.image.url }}" alt="{{ specialization.name }}">
+                        {% endif %}
+                    </a>
+                </article>
+            </li>
+        {% endfor %}
+    </ul>
+</section>
+
+
 <section id="last-posts">
-    <a href="{% url 'blog' %}"><h2>Ostatnio dodane posty:</h2></a>
+    <a href="{% url 'blog' %}"><h2>OSTATNIO DODANE POSTY</h2></a>
     <ul>
         {% for post in posts %}
             <li>
-                <article class="posts">
+                <article class="post">
                     <a href="{% url 'post-detail' post.slug %}">
                         {% if post.image %}
-                            <img src="" alt="">
+                            <img src="{{ post.image.url }}" alt="{{ post.title }}">
                         {% endif %}
                         <div class="post__content">
                             <h3>{{ post.title }}</h3>
+                            <p>{{ post.date }}</p>
                             <p>{{ post.excerpt }}</p>
                         </div>
                     </a>
@@ -26,8 +64,10 @@
         {% endfor %}
     </ul>
 </section>
+
 <section id="shop">
     <a href="{% url 'shop' %}"><h2>SKLEP</h2></a>
+
 </section>
 
 {% endblock %}

@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Blog{% endblock %}
+{% block css_files %}<link rel="stylesheet" href="{% static 'blog/blog-main-page.css' %}">{% endblock %}
 
 
 {% block content %}
-    <h1>Blog</h1>
     <section id="main-page">
-        <h2>Moje posty</h2>
+        <div id="banner">
+            <h1>MOJE POSTY</h1>
+        </div>
         <div>
             <ul>
                 {% for post in posts %}
@@ -14,7 +17,7 @@
                         <article class="post">
                             <a href="{% url 'post-detail' post.slug %}">
                                 {% if post.image %}
-                                    <img src="" alt="">
+                                    <img src="{{ post.image.url }}" alt="{{ post.title }}">
                                 {% endif %}
                                 <div class="post__content">
                                     <h3>{{ post.title }}</h3>

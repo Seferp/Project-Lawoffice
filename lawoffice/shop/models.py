@@ -1,11 +1,12 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 
 
 class Document(models.Model):
     type = models.CharField(max_length=50)
-
+    image = models.ImageField(blank=True, null=True, upload_to='posts')
 
     def __str__(self):
         return self.type
@@ -18,7 +19,7 @@ class Item(models.Model):
     type = models.ForeignKey(Document, on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=9, decimal_places=2)
     file = models.FileField(blank=True, null=True)
-    image = models.ImageField(blank=True, null=True)
+    image = models.ImageField(blank=True, null=True, upload_to='posts')
 
     def __str__(self):
         return self.name

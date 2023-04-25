@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto+Condensed&display=swap');
+
+
+
+body {
+    background-color: #ffffff;
+}
+
+#container {
+    background-color: #D2D2D1;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 5rem;
+    padding: 1rem 5rem;
+    min-height: 35rem;
+    box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.5);
+}
+
+#container img {
+    height: 25rem;
+    float: right;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+.desc {
+    justify-content: left;
+    margin-left: 20px;
+    font-size: 20px;
+    width: 70%;
+}
+.desc code {
+  white-space: pre-wrap;
+  font-family: 'Playfair Display', serif;
+  word-wrap: normal;
+  -webkit-word-wrap: normal;
+  -moz-word-wrap: normal;
+  -ms-word-wrap: normal;
+
+  }
+

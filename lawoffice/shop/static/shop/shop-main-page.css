@@ -1,0 +1,89 @@
+h1 {
+    text-align: center;
+    font-size: 30px;
+    color: black;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+#shop {
+  background-color: #ffffff;
+  padding: 2rem;
+  width: 100%;
+}
+
+#shop ul {
+  list-style: none;
+  margin: 100px 0 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+#shop li {
+  flex: 1;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.detail a {
+  text-decoration: none;
+  color: black;
+  transition: all 0.2s ease;
+  padding: 1rem;
+}
+
+.detail a:hover,
+.detail a:active {
+  transform: scale(1.1);
+  background-color: #D2D2D1;
+  border-radius: 12px;
+}
+
+.detail img {
+  width: 20rem;
+  height: 20rem;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+.detail h3 {
+  margin: 0.25rem 0;
+}
+
+.detail:hover time,
+.detail:active time {
+  color: white;
+}
+
+#cart {
+    position: flex;
+    float: right;
+    margin-right: 5%;
+
+}
+
+#cart button {
+    background-color: white;
+    border: none;
+    font-family: 'Playfair Display', serif;
+
+
+}
+
+#cart button a {
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+}
+
+#cart button:hover {
+    background-color: #D2D2D1;
+    border-radius: 12px;
+}

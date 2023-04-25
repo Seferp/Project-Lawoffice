@@ -1,0 +1,41 @@
+#summary {
+    background-color: #D2D2D1;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 5rem;
+    padding: 1rem 5rem;
+    min-height: 35rem;
+    box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.5);
+
+}
+
+.tag {
+    background-color: #ffffff;
+    color: black;
+    padding: 0.25rem 1rem;
+    border-radius: 16px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+#summary img {
+    height: 25rem;
+    float: right;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+.content {
+    justify-content: left;
+    margin-left: 20px;
+    font-size: 20px;
+    width: 70%;
+    padding-top: 2rem;
+}
+.content code {
+  white-space: pre-wrap;
+  font-family: 'Playfair Display', serif;
+    word-wrap: normal;
+    -webkit-word-wrap: normal;
+    -moz-word-wrap: normal;
+    -ms-word-wrap: normal;
+  }

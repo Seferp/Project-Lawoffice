@@ -1,24 +1,61 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Sklep{% endblock %}
+{% block css_files %}<link rel="stylesheet" href="{% static 'shop/shop-main-page.css' %}">{% endblock %}
 
 
 {% block content %}
-    <h1>Sklep</h1>
-    <nav>
-        <a href="{% url 'cart' %}">Koszyk</a>
-    </nav>
-
-
-    <nav>
-        <div>
-            <a href="{% url 'contracts' %}">Umowy</a>
+    <section id="shop">
+        <div id="banner">
+            <h1>Sklep</h1>
         </div>
-        <div>
-            <a href="{% url 'lawsuits' %}">Pozwy</a>
+        <div id="cart">
+            <button><a href="{% url 'cart' %}">KOSZYK</a></button>
         </div>
-        <div>
-            <a href="{% url 'writings' %}">Pisma</a>
-        </div>
-    </nav>
+        <ul>
+            <li>
+                <article class="detail">
+                    {% for contract in contract %}
+                        <a href="{% url 'contracts' %}">
+                            {% if contract.image %}
+                                <img src="{{ contract.image.url }}" alt="{{ contract.type }}">
+                            {% endif %}
+                             <div class="detail__content">
+                                <h3>Umowy</h3>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </article>
+            </li>
+            <li>
+                <article class="detail">
+                    {% for writing in writing %}
+                        <a href="{% url 'writings' %}">
+                            {% if writing.image %}
+                                <img src="{{ writing.image.url }}" alt="{{ writing.type }}">
+                            {% endif %}
+                            <div class="detail__content">
+                                <h3>Pisma</h3>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </article>
+            </li>
+            <li>
+                <article class="detail">
+                    {% for lawsuit in lawsuit %}
+                        <a href="{% url 'lawsuits' %}">
+                            {% if lawsuit.image %}
+                                <img src="{{ lawsuit.image.url }}" alt="{{ lawsuit.type }}">
+                            {% endif %}
+                            <div class="detail__content">
+                                <h3>Pozwy</h3>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </article>
+            </li>
+        </ul>
+    </section>
 {% endblock %}

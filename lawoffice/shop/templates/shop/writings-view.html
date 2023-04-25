@@ -1,16 +1,33 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Pozwy{% endblock %}
+{% block css_files %}<link rel="stylesheet" href="{% static 'shop/writings.css' %}">{% endblock %}
 
 
 {% block content %}
-<h1>Pisma</h1>
-<section>
-
-    <ul>
-        {% for item in writings %}
-            <li><a href="{% url 'writing-detail' item.slug %}">{{ item.name }}</a></li>
-        {% endfor %}
-    </ul>
-</section>
+    <section id="writings">
+        <div id="banner">
+            <h1>PISMA</h1>
+        </div>
+        <div id="cart">
+            <button><a href="{% url 'cart' %}">KOSZYK</a></button>
+        </div>
+        <ul>
+            {% for item in writings %}
+                <li>
+                    <article class="item">
+                        <a href="{% url 'writing-detail' item.slug %}">
+                                {% if item.image %}
+                                    <img src="{{ item.image.url }}" alt="{{ item.name }}">
+                                {% endif %}
+                             <div class="item__content">
+                                <h3>{{ item.name }}</h3>
+                             </div>
+                        </a>
+                    </article>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
 {% endblock %}

@@ -16,16 +16,25 @@ class Home(View):
     def get_specializations(self):
         specializations = Specialization.objects.all().order_by('id')
         return specializations
-    def get_documents(self):
-        documents = Document.objects.all().order_by('id')
-        return documents
+    def get_contract(self):
+        contract = Document.objects.filter(type='Umowa')
+        return contract
+    def get_writing(self):
+        writing = Document.objects.filter(type='Pismo')
+        return writing
+    def get_lawsuit(self):
+        lawsuit = Document.objects.filter(type='Pozew')
+        return lawsuit
 
 
     def get(self, request):
         posts = self.get_last_posts()
         specializations = self.get_specializations()
-        documents = self.get_documents()
-        return render(request, 'my_site/home.html', {'specializations': specializations, 'posts': posts, 'documents': documents})
+        contract = self.get_contract()
+        writing = self.get_writing()
+        lawsuit = self.get_lawsuit()
+        return render(request, 'my_site/home.html', {'specializations': specializations, 'posts': posts, 'contract': contract, 'writing': writing, 'lawsuit': lawsuit})
+
 
 def about_me_view(request):
     return render(request, 'my_site/about-me.html')
@@ -67,4 +76,6 @@ class Specializations(ListView):
 class SpecializationsDetail(DetailView):
     model = Specialization
     template_name = 'my_site/specialization-detail.html'
+
+
 

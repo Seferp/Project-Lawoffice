@@ -22,24 +22,28 @@
             <div class="content">
                 <pre><code>{{ post.content }}</code></pre>
             </div>
-            <p>Ostatnio modyfikowany: {{ post.date|date:"d-m-Y" }}</p>
+            <p>Ostatnio modyfikowany: {{ post.date|date:"d.m.Y" }}</p>
         </div>
     </section>
 
     <section id="comments">
-        <h2>Komentarze:</h2>
-        <ul>
-            {% for comment in comments %}
-                <li>
-                    <h3>{{ comment.user_name }}</h3><p>{{ comment.date }}</p>
-                    <p>{{ comment.text|linebreaks }}</p>
-                </li>
-            {% endfor %}
-        </ul>
+        <h2>KOMENTARZE:</h2>
+           {% if comment %}
+                <ul>
+                    {% for comment in comments %}
+                        <li>
+                            <h3>{{ comment.user_name }}</h3><span><p>{{ comment.date|date:"d.m.Y" }}</p></span>
+                            <p>{{ comment.text|linebreaks }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Brak komentarzy.</p>
+            {% endif %}
     </section>
 
     <section id="comment_form">
-        <h2>Twój komentarz!</h2>
+        <h2>DODAJ KOMENTARZ</h2>
         <div class="container">
             <form action="{% url 'post-detail' post.slug %}" method="POST">
                 {% csrf_token %}

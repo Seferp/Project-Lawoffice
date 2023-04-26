@@ -46,8 +46,8 @@ h1 {
 }
 
 .detail img {
-  width: 20rem;
-  height: 20rem;
+  width: 25rem;
+  height: 25rem;
   object-fit: cover;
   border-radius: 50%;
   border: 2px solid black;
@@ -73,8 +73,6 @@ h1 {
     background-color: white;
     border: none;
     font-family: 'Playfair Display', serif;
-
-
 }
 
 #cart button a {

@@ -16,10 +16,10 @@
             W prawie niewiele jest sytuacji bez wyjścia, ale by to wyjście znaleźć, najpierw musimy wiedzieć jakie jest nasze położenie i jak do tego doszło. Wtedy znajdziemy rozwiązanie pozwalające poczuć się bezpiecznie.”
         </p>
         <a href="{% url 'about-me' %}">
-            <img src="{% static 'my_site/images/podpis.jpg' %}" alt="Adwokat Anna Seferyniak">
+            <img src="{% static 'my_site/images/podpis-biel.jpg' %}" alt="Adwokat Anna Seferyniak">
         </a>
     </div>
-    <img id="img-me" src="{% static 'my_site/images/grim.jpg' %}" alt="o mnie">
+    <img id="img-me" src="{% static 'my_site/images/DSC_2684_2.jpg' %}" alt="o mnie">
 </section>
 
 <section id="specializations">
@@ -33,7 +33,6 @@
                     <a href="{% url 'specialization-detail' specialization.slug %}">
                         <div class="specialization__content">
                             <h3>{{ specialization.name }}</h3>
-                            {{ specialization.excerpt }}
                         </div>
                         {% if specialization.image %}
                             <img src="{{ specialization.image.url }}" alt="{{ specialization.name }}">
@@ -60,7 +59,7 @@
                         {% endif %}
                         <div class="post__content">
                             <h3>{{ post.title }}</h3>
-                            <p>{{ post.date }}</p>
+                            <p>{{ post.date|date:"d.m.Y" }}</p>
                             <p>{{ post.excerpt }}</p>
                         </div>
                     </a>

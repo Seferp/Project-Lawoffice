@@ -1,5 +1,3 @@
-
-
 h2 {
     text-align: center;
     font-size: 30px;
@@ -15,13 +13,15 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #D2D2D1;
+    background-color: #D2D2D1;
+    background-color: #E5E5E5;
     padding: 45px 0;
 }
 
 #about-me div {
     width: 50rem;
-    background: #a9957b;
+    background-color: #a9957b;
+    background-color: #FFFFFF;
     margin-left: 15%;
     margin-right: 50px;
     box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.5);
@@ -58,6 +58,10 @@ a {
     padding: 2rem;
     width: 100%;
     text-decoration: none;
+}
+
+#specializations h2 {
+    margin-bottom: 3rem;
 }
 
 #specializations ul {
@@ -98,9 +102,10 @@ a {
 
 .specialization a:hover,
 .post a:active {
-  transform: scale(1.1);
-  background-color: #D2D2D1;
-  border-radius: 12px;
+    transform: scale(1.1);
+    background-color: #D2D2D1;
+    background-color: #FCA311;
+    border-radius: 12px;
 }
 
 .specialization img {
@@ -162,6 +167,7 @@ a {
 .post a:active {
   transform: scale(1.1);
   background-color: #D2D2D1;
+  background-color: #FCA311;
   border-radius: 12px;
 }
 
@@ -184,6 +190,7 @@ a {
 
 #shop {
   background-color: #a9957b;
+  background-color: #E5E5E5;
   padding: 2rem;
   width: 100%;
 }
@@ -219,6 +226,7 @@ a {
 .detail a:active {
   transform: scale(1.1);
   background-color: #D2D2D1;
+  background-color: #FCA311;
   border-radius: 12px;
 }
 

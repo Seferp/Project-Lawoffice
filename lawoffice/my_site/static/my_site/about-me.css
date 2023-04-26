@@ -8,7 +8,7 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     background-color: #ffffff;
-
+    margin-bottom: 100px;
 }
 
 .content {
@@ -24,5 +24,4 @@ h2 {
     display: block;
     margin: auto;
     box-shadow: 30px 30px 30px rgba(0, 0, 0, 0.5);
-
 }

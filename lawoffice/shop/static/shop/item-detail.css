@@ -1,0 +1,77 @@
+#banner {
+    margin: 20px;
+}
+
+#cart {
+    text-align: right;
+    position: flex;
+    margin-right: 5%;
+
+}
+
+#cart button {
+    background-color: #ffffff;
+    border: none;
+    font-family: 'Playfair Display', serif;
+}
+
+#cart button a {
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+}
+
+#cart button:hover {
+    background-color: #D2D2D1;
+    border-radius: 12px;
+}
+
+#item form input {
+    font: inherit;
+    background-color: #ffffff;
+    color: black;
+    padding: 0.25rem 1rem;
+    border: 1px solid black;
+    border-radius: 16px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+#item form input:hover,
+#item form input:active {
+  background-color: #D2D2D1;
+}
+
+#item {
+    background-color: #D2D2D1;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 5rem;
+    padding: 1rem 5rem;
+    min-height: 35rem;
+    box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.5);
+}
+
+#item img {
+    height: 25rem;
+    float: right;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+.description {
+    justify-content: left;
+    margin-left: 20px;
+    font-size: 20px;
+    width: 70%;
+    padding-top: 2rem;
+}
+.description code {
+  white-space: pre-wrap;
+  font-family: 'Playfair Display', serif;
+    word-wrap: normal;
+    -webkit-word-wrap: normal;
+    -moz-word-wrap: normal;
+    -ms-word-wrap: nor
+
+
+

@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto+Condensed&display=swap');
+* {
+  box-sizing: border-box;
+}
+
+html {
+    font-family: 'Playfair Display', serif;
+}
+
+
+body {
+  margin: 0;
+}
+
+#main-navigation {
+    width: 100%;
+    height: auto;
+    display: flex;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5% 10%;
+    background-color: #ffffff ;
+    z-index: 1;
+}
+
+#main-navigation img{
+    position: absolute;
+    top: 50%;
+    transform:  translate(0, -50%);
+    left: 10rem;
+    object-fit: cover;
+    object-position: top;
+    width: 30%;
+    heightL auto;
+}
+
+#main-navigation nav{
+    position: absolute;
+    right: 5%;
+}
+
+#main-navigation button {
+    background-color: white;
+    border: none;
+    font-family: 'Playfair Display', serif;
+}
+
+#main-navigation button:hover {
+    background-color: #D2D2D1;
+    border-radius: 12px;
+}
+
+#main-navigation a {
+    font-size: 20px;
+    color: black;
+    text-decoration: none;
+}
+
+
+
+footer {
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background-color: #14213d;
+    color: white;
+
+    }
+
+footer a {
+    text-decoration: none;
+}
+
+footer div {
+  flex-basis: calc(33.33% - 3.33%);
+
+}
+
+footer h3 {
+  margin: 0;
+  font-size: 25px;
+  font-weight: bold;
+}
+

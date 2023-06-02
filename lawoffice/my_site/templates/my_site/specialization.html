@@ -1,21 +1,33 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Specjalizacje{% endblock %}
-
+{% block css_files %}<link rel="stylesheet" href="{% static 'my_site/specialization.css' %}">{% endblock %}
 
 {% block content %}
-    <h1>Specjalizacje</h1>
-    {% for specialization in specializations %}
-        <li>
-            <a href="{% url 'specialization-detail' specialization.slug %}">
-                {% if specialization.image %}
-                    {{ specialization.image }}
-                {% endif %}
-                {{ specialization.name }}<br>
-                {{ specialization.excerpt }}
-            </a>
-        </li>
-    {% endfor %}
+    <section id="specializations">
+        <div id="banner">
+            <h1>SPECJALIZACJE</h1>
+        </div>
+
+        <ul>
+            {% for specialization in specializations %}
+                <li>
+                    <article class="specialization">
+                        <a href="{% url 'specialization-detail' specialization.slug %}">
+                        <div class="specialization__content">
+                            <h3>{{ specialization.name }}</h3>
+                            {{ specialization.excerpt }}
+                        </div>
+                            {% if specialization.image %}
+                                <img src="{{ specialization.image.url }}" alt="{{ specialization.name }}">
+                            {% endif %}
+                        </a>
+                    </article>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
 {% endblock %}
 
 

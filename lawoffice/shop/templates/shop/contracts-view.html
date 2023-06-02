@@ -1,15 +1,33 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Umowy{% endblock %}
+{% block css_files %}<link rel="stylesheet" href="{% static 'shop/contracts.css' %}">{% endblock %}
 
 
 {% block content %}
-<h1>Umowy</h1>
-<section>
-    <ul>
-        {% for item in contracts %}
-            <li><a href="{% url 'contract-detail' item.slug %}">{{ item.name }}</a></li>
-        {% endfor %}
-    </ul>
-</section>
+    <section id="contracts">
+        <div id="banner">
+            <h1>UMOWY</h1>
+        </div>
+        <div id="cart">
+            <button><a href="{% url 'cart' %}">KOSZYK</a></button>
+        </div>
+        <ul>
+            {% for item in contracts %}
+                <li>
+                    <article class="item">
+                        <a href="{% url 'contract-detail' item.slug %}">
+                                {% if item.image %}
+                                    <img src="{{ item.image.url }}" alt="{{ item.name }}">
+                                {% endif %}
+                             <div class="item__content">
+                                <h3>{{ item.name }}</h3>
+                             </div>
+                        </a>
+                    </article>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
 {% endblock %}

@@ -1,0 +1,27 @@
+h1,
+h2 {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+
+#about-me {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #ffffff;
+    margin-bottom: 100px;
+}
+
+.content {
+    margin-left: 40px;
+    float: left;
+    max-width: 50%;
+}
+
+#about-me img {
+    float: right;
+    max-width: 500px;
+    max-height: 500px;
+    display: block;
+    margin: auto;
+    box-shadow: 30px 30px 30px rgba(0, 0, 0, 0.5);
+}

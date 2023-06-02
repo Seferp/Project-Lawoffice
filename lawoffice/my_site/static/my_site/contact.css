@@ -1,0 +1,84 @@
+h1,
+h2 {
+    text-align: center;
+}
+#contact {
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 2rem;
+
+}
+
+#contact ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#contact li {
+  flex: 1;
+  margin: 0;
+  text-align: center;
+}
+
+#contact-form {
+    margin: 3rem auto;
+    width: 90%;
+    max-width: 60rem;
+    box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    border: 1px solid #D2D2D1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#contact-form button {
+
+    font: inherit;
+    background-color: #ffffff;
+    color: black;
+    padding: 0.25rem 1rem;
+    border: 1px solid black;
+    border-radius: 16px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    margin-top: 1rem;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+#contact-form button:hover,
+#comment_form button:active {
+  background-color: #D2D2D1;
+}
+
+#contact-form form {
+    margin-bottom: 1rem;
+}
+
+#contact-form form label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: flex;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#contact-form form input[type="checkbox"] {
+    margin-right: 0.5rem;
+    margin-top: 0;
+}
+
+#contact-form form input,
+#contact-form form textarea {
+  display: block;
+  width: 80%;
+  margin-left: 10%;
+  font: inherit;
+  padding: 0.25rem;
+  border-radius: 6px;
+  border: 1px solid black;
+  resize: none
+}

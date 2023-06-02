@@ -1,0 +1,127 @@
+#summary {
+    background-color: #D2D2D1;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 5rem;
+    padding: 1rem 5rem;
+    min-height: 35rem;
+    box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.5);
+}
+
+.tag {
+    background-color: #ffffff;
+    color: black;
+    padding: 0.25rem 1rem;
+    border-radius: 16px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+#summary img {
+    height: 25rem;
+    float: right;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+.content {
+    justify-content: left;
+    margin-left: 20px;
+    font-size: 20px;
+    width: 70%;
+    padding-top: 2rem;
+}
+.content code {
+  white-space: pre-wrap;
+  font-family: 'Playfair Display', serif;
+    word-wrap: normal;
+    -webkit-word-wrap: normal;
+    -moz-word-wrap: normal;
+    -ms-word-wrap: normal;
+  }
+
+#comments {
+    margin: 3rem auto;
+    width: 90%;
+    max-width: 60rem;
+    background-color: white;
+    box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.5);
+    padding: 1rem 2rem;
+    border: 1px solid #D2D2D1;
+}
+
+#comments li h3,
+#comments li span {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+#comments ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#comments li {
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #D2D2D1;
+}
+
+#comments li:last-of-type {
+  border-bottom: none;
+}
+
+#comments h2 {
+  color: #464646;
+}
+
+#comment_form {
+    margin: 3rem auto;
+    width: 90%;
+    max-width: 40rem;
+    background-color: #ffffff;
+    box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    border: 1px solid #D2D2D1;
+}
+
+#comment_form button {
+    font: inherit;
+    background-color: #ffffff;
+    color: black;
+    padding: 0.25rem 1rem;
+    border: 1px solid black;
+    border-radius: 16px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+#comment_form button:hover,
+#comment_form button:active {
+  background-color: #D2D2D1;
+}
+
+.form-control {
+  margin-bottom: 1rem;
+}
+
+.form-control label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.form-control input,
+.form-control textarea {
+  display: block;
+  width: 100%;
+  font: inherit;
+  padding: 0.25rem;
+  border-radius: 6px;
+  border: 1px solid black;
+
+}
+
+textarea {
+resize: none
+}
+
+

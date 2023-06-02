@@ -1,0 +1,52 @@
+h1 {
+    text-align: center;
+    color: #464646;
+}
+
+#faq {
+    margin: 3rem auto;
+    width: 90%;
+    max-width: 60rem;
+    background-color: white;
+    box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.5);
+    padding: 1rem 2rem;
+    border: 1px solid #D2D2D1;
+    overflow: hidden;
+}
+
+#faq ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#faq li {
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #D2D2D1;
+}
+
+#faq li:last-of-type {
+  border-bottom: none;
+}
+
+#faq p {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height .5s, opacity 0.3s;
+
+}
+
+#faq input[type="checkbox"] {
+    display: none;
+}
+
+#faq input[type="checkbox"]:checked ~ p {
+    max-height: 1000px;
+    opacity: 1;
+}
+
+#faq label {
+    display: block;
+    cursor: pointer;
+}

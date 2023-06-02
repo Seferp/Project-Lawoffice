@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, View, DetailView
 from blog.models import Post
+from shop.models import Document
 from django.core.mail import send_mail
 
 from .models import FAQ, Specialization
@@ -9,14 +10,31 @@ from .forms import ContactForm
 # Create your views here.
 
 class Home(View):
-    def get_query_set(self):
+    def get_last_posts(self):
         posts = Post.objects.all().order_by('-date')
-        data = posts[:3]
-        return data
+        return posts[:3]
+    def get_specializations(self):
+        specializations = Specialization.objects.all().order_by('id')
+        return specializations
+    def get_contract(self):
+        contract = Document.objects.filter(type='Umowa')
+        return contract
+    def get_writing(self):
+        writing = Document.objects.filter(type='Pismo')
+        return writing
+    def get_lawsuit(self):
+        lawsuit = Document.objects.filter(type='Pozew')
+        return lawsuit
+
 
     def get(self, request):
-        data = self.get_query_set()
-        return render(request, 'my_site/home.html', {'posts': data})
+        posts = self.get_last_posts()
+        specializations = self.get_specializations()
+        contract = self.get_contract()
+        writing = self.get_writing()
+        lawsuit = self.get_lawsuit()
+        return render(request, 'my_site/home.html', {'specializations': specializations, 'posts': posts, 'contract': contract, 'writing': writing, 'lawsuit': lawsuit})
+
 
 def about_me_view(request):
     return render(request, 'my_site/about-me.html')
@@ -58,4 +76,6 @@ class Specializations(ListView):
 class SpecializationsDetail(DetailView):
     model = Specialization
     template_name = 'my_site/specialization-detail.html'
+
+
 

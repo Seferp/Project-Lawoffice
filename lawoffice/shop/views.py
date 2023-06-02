@@ -1,12 +1,31 @@
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, View
 from django.views.decorators.csrf import csrf_exempt
-from .models import Item, Cart
+from .models import Item, Cart, Document
 
 # Create your views here.
 
-def shop_home_page(request):
-    return render(request, 'shop/shop-main-page.html')
+class ShopHomePage(View):
+
+    def get_contract(self):
+        contract = Document.objects.filter(type='Umowa')
+        return contract
+    def get_writing(self):
+        writing = Document.objects.filter(type='Pismo')
+        return writing
+    def get_lawsuit(self):
+        lawsuit = Document.objects.filter(type='Pozew')
+        return lawsuit
+
+
+    def get(self, request):
+        contract = self.get_contract()
+        writing = self.get_writing()
+        lawsuit = self.get_lawsuit()
+        return render(request, 'shop/shop-main-page.html', {'contract': contract, 'writing': writing, 'lawsuit': lawsuit})
+
+
+
 
 class Contracts(ListView):
     model = Item
@@ -43,6 +62,9 @@ class ItemDetail(DetailView):
 
 @csrf_exempt
 def add_to_cart(request, slug):
+    if not request.session.session_key:
+        request.session.save()
+
     item = Item.objects.get(slug=slug)
     session_id = request.session.session_key
     cart, created = Cart.objects.get_or_create(session_id=session_id, item=item)

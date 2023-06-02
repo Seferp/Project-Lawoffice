@@ -1,9 +1,44 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}O mnie{% endblock %}
+{% block css_files %}<link rel="stylesheet" href="{% static 'my_site/about-me.css' %}">{% endblock %}
 
 
 {% block content %}
-<h1>O mnie</h1>
-<p>Hello, it's me :)</p>
+<section id="about-me">
+    <div class="content">
+        <h1>Nazywam się Anna Seferyniak i jestem adwokatem.</h1>
+        <h2>To oznacza, że:</h2>
+        <ul>
+            <li>ukończyłam studia prawnicze na Wydziale Prawa i Administracji Uniwersytetu Łódzkiego</li>
+            <li>odbyłam aplikację adwokacką przy Okręgowej Radzie Adwokackiej w&nbsp;Łodzi</li>
+            <li>uzyskałam pozytywny wynik z egzaminu zawodowego</li>
+            <li>zostałam wpisana na listę adwokatów Okręgowej Rady Adwokackiej w&nbsp;Łodzi</li>
+        </ul>
+
+        <h2>Moje doświadczenie praktyczne:</h2>
+
+        <ul>
+            <li>pracowałam w kancelariach adwokackich i radcowskich już od III roku studiów</li>
+            <li>udzielałam porad prawnych jako wolontariusz w Klinice Prawa WPiA UŁ w okresie studiów</li>
+            <li>odbyłam praktyki w Prokuratorii Generalnej Rzeczypospolitej Polskiej</li>
+            <li>pomagam pro bono na rzecz Stowarzyszenia OTOZ Animals</li>
+            <li>od momentu uzyskania wpisu na listę adwokatów prowadzę własną kancelarię adwokacką</li>
+        </ul>
+
+        <h2>Co to oznacza?</h2>
+
+        <ul>
+            <li>już w okresie aplikacji wielokrotnie występowałam przed sądami wszystkich instancji w charakterze profesjonalnego pełnomocnika</li>
+            <li>wielokrotnie uczestniczyłam w czynnościach przed organami postępowania przygotowawczego</li>
+            <li>brałam udział w mediacjach i negocjacjach</li>
+            <li>przeprowadziłam niezliczoną ilość analiz powierzonych mi spraw i dokumentów oraz analogiczną ilość pism procesowych i&nbsp;opinii prawnych</li>
+        </ul>
+
+
+        <p>Samodzielna praca i nieustanny rozwój pozwoliły mi bez obaw podjąć się prowadzenia własnej Kancelarii. Zapraszam do współpracy.</p>
+    </div>
+    <img src="{% static 'my_site/images/grim.jpg' %}" alt="o mnie">
+</section>
 {% endblock %}

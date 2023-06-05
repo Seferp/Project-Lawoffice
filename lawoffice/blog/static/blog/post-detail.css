@@ -1,5 +1,5 @@
 #summary {
-    background-color: #D2D2D1;
+    background-color: #FCA311;
     width: 90%;
     margin-left: 5%;
     margin-bottom: 5rem;
@@ -96,7 +96,7 @@
 
 #comment_form button:hover,
 #comment_form button:active {
-  background-color: #D2D2D1;
+  background-color: #E5E5E5;
 }
 
 .form-control {

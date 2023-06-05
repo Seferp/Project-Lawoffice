@@ -16,10 +16,10 @@
             W prawie niewiele jest sytuacji bez wyjścia, ale by to wyjście znaleźć, najpierw musimy wiedzieć jakie jest nasze położenie i jak do tego doszło. Wtedy znajdziemy rozwiązanie pozwalające poczuć się bezpiecznie.”
         </p>
         <a href="{% url 'about-me' %}">
-            <img src="{% static 'my_site/images/podpis-biel.jpg' %}" alt="Adwokat Anna Seferyniak">
+            <img src="{% static 'my_site/images/podpis-szary.jpg' %}" alt="Adwokat Anna Seferyniak">
         </a>
     </div>
-    <img id="img-me" src="{% static 'my_site/images/DSC_2684_2.jpg' %}" alt="o mnie">
+    <img id="img-me" src="{% static 'my_site/images/home_img.jpg' %}" alt="o mnie">
 </section>
 
 <section id="specializations">
@@ -69,54 +69,54 @@
     </ul>
 </section>
 
-<section id="shop">
-    <a href="{% url 'shop' %}">
-        <h2>SKLEP</h2>
-    </a>
-    <ul>
-        <li>
-            <article class="detail">
-                {% for contract in contract %}
-                    <a href="{% url 'contracts' %}">
-                        {% if contract.image %}
-                            <img src="{{ contract.image.url }}" alt="{{ contract.type }}">
-                        {% endif %}
-                         <div class="detail__content">
-                            <h3>Umowy</h3>
-                        </div>
-                    </a>
-                {% endfor %}
-            </article>
-        </li>
-        <li>
-            <article class="detail">
-                {% for writing in writing %}
-                    <a href="{% url 'writings' %}">
-                        {% if writing.image %}
-                            <img src="{{ writing.image.url }}" alt="{{ writing.type }}">
-                        {% endif %}
-                        <div class="detail__content">
-                            <h3>Pisma</h3>
-                        </div>
-                    </a>
-                {% endfor %}
-            </article>
-        </li>
-        <li>
-            <article class="detail">
-                {% for lawsuit in lawsuit %}
-                    <a href="{% url 'lawsuits' %}">
-                        {% if lawsuit.image %}
-                            <img src="{{ lawsuit.image.url }}" alt="{{ lawsuit.type }}">
-                        {% endif %}
-                        <div class="detail__content">
-                            <h3>Pozwy</h3>
-                        </div>
-                    </a>
-                {% endfor %}
-            </article>
-        </li>
-    </ul>
+<!--<section id="shop">-->
+<!--    <a href="{% url 'shop' %}">-->
+<!--        <h2>SKLEP</h2>-->
+<!--    </a>-->
+<!--    <ul>-->
+<!--        <li>-->
+<!--            <article class="detail">-->
+<!--                {% for contract in contract %}-->
+<!--                    <a href="{% url 'contracts' %}">-->
+<!--                        {% if contract.image %}-->
+<!--                            <img src="{{ contract.image.url }}" alt="{{ contract.type }}">-->
+<!--                        {% endif %}-->
+<!--                         <div class="detail__content">-->
+<!--                            <h3>Umowy</h3>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                {% endfor %}-->
+<!--            </article>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <article class="detail">-->
+<!--                {% for writing in writing %}-->
+<!--                    <a href="{% url 'writings' %}">-->
+<!--                        {% if writing.image %}-->
+<!--                            <img src="{{ writing.image.url }}" alt="{{ writing.type }}">-->
+<!--                        {% endif %}-->
+<!--                        <div class="detail__content">-->
+<!--                            <h3>Pisma</h3>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                {% endfor %}-->
+<!--            </article>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <article class="detail">-->
+<!--                {% for lawsuit in lawsuit %}-->
+<!--                    <a href="{% url 'lawsuits' %}">-->
+<!--                        {% if lawsuit.image %}-->
+<!--                            <img src="{{ lawsuit.image.url }}" alt="{{ lawsuit.type }}">-->
+<!--                        {% endif %}-->
+<!--                        <div class="detail__content">-->
+<!--                            <h3>Pozwy</h3>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                {% endfor %}-->
+<!--            </article>-->
+<!--        </li>-->
+<!--    </ul>-->
 </section>
 
 {% endblock %}

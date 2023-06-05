@@ -131,3 +131,5 @@ dmypy.json
 .idea
 
 lawoffice/my_site/static/my_site/images
+lawoffice/uploads
+lawoffice/templates/test.txt

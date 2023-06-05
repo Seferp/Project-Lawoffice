@@ -14,8 +14,10 @@
 <body>
 <header id="main-navigation">
     <a href="{% url 'home' %}">
-        <img src="{% static 'images/logo.png' %}" alt="Kancelaria Adowkacka Anna Seferyniak">
+        <img src="{% static 'images/logo.jpg' %}" alt="Kancelaria Adwokacka Anna Seferyniak">
     </a>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle">&#9776;</label>
     <nav>
         <button><a href="{% url 'home' %}">STRONA GŁÓWNA</a></button>
         <button><a href="{% url 'about-me' %}">O MNIE</a></button>
@@ -29,34 +31,23 @@
 {% block content %}{% endblock %}
 
 <footer>
-    <div>
+    <div id="contact">
         <h3>Kontakt</h3>
-        <p>bla bla bla</p>
-        <p>bla bla bla</p>
-        <p>bla bla bla</p>
-        <p>bla bla bla</p>
+        <p>ul Widok 8/5p</p>
+        <p>00-127 Warszawa</p>
+        <p>570 665 936</p>
+        <p>mail</p>
     </div>
-    <div>
+    <div id="links">
         <h3>Szybkie linki</h3>
-        <a href="{% url 'home' %}">STRONA GŁÓWNA</a><br>
-        <a href="{% url 'about-me' %}">O MNIE</a><br>
-        <a href="{% url 'specialization' %}">SPECJALIZACJE</a><br>
-        <a href="{% url 'blog' %}">BLOG</a><br>
-        <a href="{% url 'shop' %}">SKLEP</a><br>
-        <a href="{% url 'faq' %}">FAQ</a><br>
-        <a href="{% url 'contact' %}">KONTAKT</a>
+        <p><a href="{% url 'home' %}">Strona głóna</a><br></p>
+        <p><a href="{% url 'about-me' %}">O mnie</a><br></p>
+        <p><a href="{% url 'specialization' %}">Specjalizacje</a><br></p>
+        <p><a href="{% url 'blog' %}">Blog</a><br></p>
+        <p><a href="{% url 'shop' %}">Sklep</a><br></p>
+        <p><a href="{% url 'faq' %}">FAQ</a><br></p>
+        <p><a href="{% url 'contact' %}">Kontakt</a></p>
       </div>
-    <div>
-        <h3>Godziny otwarcia:</h3>
-        <p>Pon:</p>
-        <p>Wt:</p>
-        <p>Śr:</p>
-        <p>Czw:</p>
-        <p>Pt:</p>
-        <p>Sob:</p>
-        <p>Nd:</p>
-    </div>
 </footer>
-
 </body>
 </html>

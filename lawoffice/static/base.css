@@ -34,13 +34,14 @@ body {
     left: 10rem;
     object-fit: cover;
     object-position: top;
-    width: 30%;
-    heightL auto;
+    width: 25%;
+
 }
 
 #main-navigation nav{
-    position: absolute;
-    right: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #main-navigation button {
@@ -49,8 +50,19 @@ body {
     font-family: 'Playfair Display', serif;
 }
 
+#main-navigation input[type="checkbox"] {
+    display: none;
+}
+
+#main-navigation label {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
 #main-navigation button:hover {
-    background-color: #D2D2D1;
+    background-color: #FCA311;
     border-radius: 12px;
 }
 
@@ -60,27 +72,68 @@ body {
     text-decoration: none;
 }
 
+@media (max-width: 768px) {
+    #main-navigation img {
+/*        left: 5%;*/
+        position: absolute;
+        top: 50%;
+        transform:  translate(0, -50%);
+        left: 10rem;
+        object-fit: cover;
+        object-position: top;
+    }
+
+    #main-navigation nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #ffffff;
+        padding: 10px;
+    }
+
+    #main-navigation input[type="checkbox"]:checked ~ nav {
+        display: flex;
+    }
+
+    #main-navigation label {
+        display: block;
+    }
+
+    #main-navigation a {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
+
 
 
 footer {
     display: flex;
-    justify-content: center;
+    padding-top: 2rem;
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 20px;
     background-color: #14213d;
     color: white;
-
-    }
-
-footer a {
-    text-decoration: none;
 }
 
-footer div {
-  flex-basis: calc(33.33% - 3.33%);
+#links a {
+    text-decoration: none;
+    color: white
+}
 
+
+#contact {
+    margin-left: 25%;
+    transform:  translate(-30%, 0);
+}
+
+#links {
+    margin-left: 30%;
+    transform:  translate(-30%, 0);
 }
 
 footer h3 {
@@ -88,4 +141,5 @@ footer h3 {
   font-size: 25px;
   font-weight: bold;
 }
+
 

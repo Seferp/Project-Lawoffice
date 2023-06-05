@@ -2,22 +2,22 @@ h1,
 h2 {
     text-align: center;
 }
-#contact {
+
+#contacts {
     margin-left: 10%;
     margin-right: 10%;
     padding: 2rem;
 
 }
-
-#contact ul {
+#contacts ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
-    flex-wrap: wrap;
+
 }
 
-#contact li {
+#contacts li {
   flex: 1;
   margin: 0;
   text-align: center;
@@ -51,7 +51,7 @@ h2 {
 
 #contact-form button:hover,
 #comment_form button:active {
-  background-color: #D2D2D1;
+  background-color: #E5E5E5;
 }
 
 #contact-form form {

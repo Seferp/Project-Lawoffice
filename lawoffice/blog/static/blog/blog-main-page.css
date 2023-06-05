@@ -43,7 +43,7 @@
 .post a:hover,
 .post a:active {
   transform: scale(1.1);
-  background-color: #D2D2D1;
+  background-color: #FCA311;
   border-radius: 12px;
 }
 

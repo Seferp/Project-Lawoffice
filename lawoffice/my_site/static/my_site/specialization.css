@@ -2,6 +2,7 @@
     background-color: #ffffff;
     padding: 2rem;
     width: 100%;
+    margin-bottom: 20px;
     text-decoration: none;
     text-align: center;
 }
@@ -52,7 +53,7 @@
 .specialization a:hover,
 .post a:active {
   transform: scale(1.1);
-  background-color: #D2D2D1;
+  background-color: #FCA311;
   border-radius: 12px;
 }
 

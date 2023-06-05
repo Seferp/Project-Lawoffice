@@ -13,15 +13,13 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #D2D2D1;
-    background-color: #E5E5E5;
+    background-color: #FFFFFF;
     padding: 45px 0;
 }
 
 #about-me div {
     width: 50rem;
-    background-color: #a9957b;
-    background-color: #FFFFFF;
+    background-color: #E5E5E5;
     margin-left: 15%;
     margin-right: 50px;
     box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.5);
@@ -31,13 +29,14 @@ a {
     margin: 0;
     color: black;
     padding: 1rem;
-    justify-content: center;
+    text-align: justify;
 
 }
 
 #about-me div img {
     margin: 0 auto;
     display: block;
+    width: 70%;
 }
 
 #about-me a {
@@ -58,6 +57,7 @@ a {
     padding: 2rem;
     width: 100%;
     text-decoration: none;
+    text-align: center;
 }
 
 #specializations h2 {
@@ -70,6 +70,7 @@ a {
     padding: 0;
     display: flex;
     flex-wrap: wrap;
+    gap: 1rem;
 }
 
 #specializations li {
@@ -166,7 +167,6 @@ a {
 .post a:hover,
 .post a:active {
   transform: scale(1.1);
-  background-color: #D2D2D1;
   background-color: #FCA311;
   border-radius: 12px;
 }
@@ -189,10 +189,9 @@ a {
 }
 
 #shop {
-  background-color: #a9957b;
-  background-color: #E5E5E5;
-  padding: 2rem;
-  width: 100%;
+    background-color: #FFFFFF;
+    padding: 2rem;
+    width: 100%;
 }
 
 #shop ul {
@@ -245,4 +244,8 @@ a {
 .detail:hover time,
 .detail:active time {
   color: white;
+}
+
+#shop h2{
+font-size: 80px;
 }

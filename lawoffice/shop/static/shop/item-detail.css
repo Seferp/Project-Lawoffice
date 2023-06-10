@@ -12,7 +12,6 @@
 #cart button {
     background-color: #ffffff;
     border: none;
-    font-family: 'Playfair Display', serif;
 }
 
 #cart button a {
@@ -22,7 +21,7 @@
 }
 
 #cart button:hover {
-    background-color: #D2D2D1;
+    background-color: #FCA311;
     border-radius: 12px;
 }
 
@@ -38,11 +37,11 @@
 
 #item form input:hover,
 #item form input:active {
-  background-color: #D2D2D1;
+  background-color: #E5E5E5;
 }
 
 #item {
-    background-color: #D2D2D1;
+    background-color: #FCA311;
     width: 90%;
     margin-left: 5%;
     margin-bottom: 5rem;
@@ -66,12 +65,86 @@
     padding-top: 2rem;
 }
 .description code {
-  white-space: pre-wrap;
-  font-family: 'Playfair Display', serif;
+    white-space: pre-wrap;
+    font-family: 'Poppins', sans-serif;
     word-wrap: normal;
     -webkit-word-wrap: normal;
     -moz-word-wrap: normal;
-    -ms-word-wrap: nor
+    -ms-word-wrap:
+}
 
+@media (max-width: 768px) {
+    #banner {
+        margin: 20px;
+    }
 
+    #cart {
+        text-align: right;
+        position: flex;
+        margin-right: 5%;
 
+    }
+
+    #cart button {
+        background-color: #ffffff;
+        border: none;
+    }
+
+    #cart button a {
+        text-decoration: none;
+        color: black;
+        font-size: 25px;
+    }
+
+    #cart button:hover {
+        background-color: #FCA311;
+        border-radius: 12px;
+    }
+
+    #item form input {
+        font: inherit;
+        background-color: #ffffff;
+        color: black;
+        padding: 0.25rem 1rem;
+        border: 1px solid black;
+        border-radius: 16px;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    #item form input:hover,
+    #item form input:active {
+      background-color: #E5E5E5;
+    }
+
+    #item {
+        background-color: #FCA311;
+        width: 90%;
+        margin-bottom: 2rem;
+        padding: 5%;
+        box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    #item img {
+        width: 15rem;
+        height: 15rem;
+        border-radius: 50%;
+        border: 2px solid black;
+    }
+
+    .description {
+        margin: 0;
+        padding: 0;
+        font-size: 19px;
+        width: 100%;
+        display: flex;
+        text-align: left;
+    }
+    .description code {
+        white-space: pre-wrap;
+        font-family: 'Poppins', sans-serif;
+        word-wrap: normal;
+        -webkit-word-wrap: normal;
+        -moz-word-wrap: normal;
+        -ms-word-wrap:
+    }
+}

@@ -12,7 +12,7 @@
             {% for faq in faqs %}
                 <li>
                     <input type="checkbox" id="faq{{ faq.id }}">
-                    <label for="faq{{ faq.id }}"><b>{{ faq.id }}. {{ faq.question }}</b></label>
+                    <label for="faq{{ faq.id }}"><b>{{ faq.question }}</b></label>
                     <p>{{ faq.answer }}</p>
                 </li>
             {% endfor %}

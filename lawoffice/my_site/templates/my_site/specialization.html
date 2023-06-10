@@ -17,7 +17,7 @@
                         <a href="{% url 'specialization-detail' specialization.slug %}">
                         <div class="specialization__content">
                             <h3>{{ specialization.name }}</h3>
-                            {{ specialization.excerpt }}
+                            <p>{{ specialization.excerpt }}</p>
                         </div>
                             {% if specialization.image %}
                                 <img src="{{ specialization.image.url }}" alt="{{ specialization.name }}">

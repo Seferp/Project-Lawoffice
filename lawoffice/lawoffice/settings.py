@@ -29,7 +29,6 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -84,7 +83,16 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'p1276_kancelaria',
+    #     'USER': 'Seferyniak',
+    #     'PASSWORD': 'JCD321aghprb#',
+    #     'HOST': 'kancelaria-seferyniak.pl',
+    #     'PORT': '5432',
+    # }
 }
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -136,10 +144,14 @@ STATICFILES_DIRS = [
     BASE_DIR / "static/",
 ]
 
+MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = "/files/"
+
+# STATIC_ROOT = '/home/login/domains/domain/public_python/public/static/'
+# MEDIA_ROOT = '/home/login/domains/domain/public_python/public/media/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_ROOT = BASE_DIR / "uploads"
-MEDIA_URL = "/files/"

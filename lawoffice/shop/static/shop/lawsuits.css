@@ -18,7 +18,7 @@
 #cart button {
     background-color: white;
     border: none;
-    font-family: 'Playfair Display', serif;
+
 }
 
 #cart button a {
@@ -28,7 +28,7 @@
 }
 
 #cart button:hover {
-    background-color: #D2D2D1;
+    background-color: #FCA311;
     border-radius: 12px;
 }
 
@@ -64,14 +64,95 @@
 .item a:hover,
 .item a:active {
   transform: scale(1.1);
-  background-color: #D2D2D1;
+  background-color: #FCA311;
   border-radius: 12px;
 }
 
 .item img {
-  width: 30rem;
-  height: 30rem;
+  width: 25rem;
+  height: 25rem;
   object-fit: cover;
   border-radius: 50%;
   border: 2px solid black;
+}
+
+@media (max-width: 768px) {
+
+    #lawsuits {
+        background-color: #ffffff;
+        padding: 2rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    #banner {
+        padding-bottom: 10px;
+    }
+
+    #cart {
+        position: flex;
+        float: right;
+        margin-right: 5%;
+    }
+
+    #cart button {
+        background-color: white;
+        border: none;
+
+    }
+
+    #cart button a {
+        text-decoration: none;
+        color: black;
+        font-size: 25px;
+    }
+
+    #cart button:hover {
+        background-color: #FCA311;
+        border-radius: 12px;
+    }
+
+    #lawsuits ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 100px 0 0 0;
+    }
+
+    #lawsuits li {
+      flex: 1;
+    }
+
+    .item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+
+    .item a {
+      text-decoration: none;
+      color: black;
+      transition: all 0.2s ease;
+      padding: 1rem;
+    }
+
+    .item a:hover,
+    .item a:active {
+      transform: scale(1.1);
+      background-color: #FCA311;
+      border-radius: 12px;
+    }
+
+    .item img {
+      width: 15rem;
+      height: 15rem;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid black;
+    }
 }

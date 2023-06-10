@@ -1,6 +1,5 @@
 h1,
 h2 {
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
     color: black;
 }
 
@@ -18,10 +17,51 @@ h2 {
     max-width: 50%;
 }
 
+.content ul li,
+p
+ {
+    font-size: 19px;
+}
+
 #about-me img {
     float: right;
     max-width: 500px;
     display: block;
     margin: auto;
     box-shadow: 30px 30px 30px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+    h1,
+    h2 {
+        color: black;
+    }
+
+
+    #about-me {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: #ffffff;
+        margin-bottom: 60px;
+    }
+
+    .content {
+        margin-left: 40px;
+        float: left;
+        max-width: 80%;
+    }
+
+    .content ul li,
+    p
+     {
+        font-size: 19px;
+    }
+
+    #about-me img {
+        float: right;
+        max-width: 80%;
+        display: block;
+        margin: auto;
+        box-shadow: 30px 30px 30px rgba(0, 0, 0, 0.5);
+}
 }

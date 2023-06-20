@@ -7,6 +7,9 @@
     text-align: center;
 }
 
+h1 {
+    font-size: 30px;
+}
 #banner {
     padding-bottom: 10px;
 }
@@ -22,7 +25,6 @@
 
 #specializations li {
     flex: 1;
-
 }
 
 .specialization {
@@ -32,7 +34,6 @@
     text-align: center;
     flex-basis: 33.33%;
     margin-right: 20px;
-
 }
 
 .specialization:last-child {
@@ -48,6 +49,10 @@
   color: black;
   transition: all 0.2s ease;
   padding: 1rem;
+}
+
+.specialization p {
+    font-size: 19px;
 }
 
 .specialization a:hover,
@@ -66,10 +71,98 @@
 }
 
 .specialization h3 {
-  margin: 0.25rem 0;
+    margin: 0.25rem 0;
+    font-size: 25px;
 }
 
 .specialization:hover time,
 .specialization:active time {
   color: white;
+}
+
+
+@media (max-width: 768px) {
+    #specializations {
+        background-color: #ffffff;
+        padding: 2rem;
+        width: 100%;
+        margin-bottom: 20px;
+        text-decoration: none;
+        text-align: center;
+        }
+
+    h1 {
+        font-size: 30px;
+    }
+    #banner {
+        padding-bottom: 10px;
+    }
+
+    #specializations ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    #specializations li {
+        flex: 1;
+        width: 60%;
+    }
+
+    .specialization {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        flex-basis: 33.33%;
+        margin-right: 20px;
+    }
+
+    .specialization:last-child {
+      margin-right: 0;
+    }
+
+    .specialization__content {
+        width: 15rem;
+    }
+
+    .specialization a {
+      text-decoration: none;
+      color: black;
+      transition: all 0.2s ease;
+      padding: 1rem;
+    }
+
+    .specialization p {
+        font-size: 19px;
+    }
+
+    .specialization a:hover,
+    .post a:active {
+      transform: scale(1.1);
+      background-color: #FCA311;
+      border-radius: 12px;
+    }
+
+    .specialization img {
+      width: 15rem;
+      height: 15rem;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid black;
+    }
+
+    .specialization h3 {
+        margin: 0.25rem 0;
+        font-size: 25px;
+    }
+
+    .specialization:hover time,
+    .specialization:active time {
+      color: white;
+    }
+
 }

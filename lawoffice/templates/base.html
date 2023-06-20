@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'base.css' %}">
-    {% block css_files %}<link rel="stylesheet" href="{% static 'home.css' %}">{% endblock %}
+    {% block css_files %}{% endblock %}
 </head>
 <body>
 <header id="main-navigation">
@@ -33,14 +33,14 @@
 <footer>
     <div id="contact">
         <h3>Kontakt</h3>
-        <p>ul Widok 8/5p</p>
+        <p>ul. Widok 8/5p</p>
         <p>00-127 Warszawa</p>
-        <p>570 665 936</p>
+        <p>tel +48 570 665 936</p>
         <p>mail</p>
     </div>
     <div id="links">
         <h3>Szybkie linki</h3>
-        <p><a href="{% url 'home' %}">Strona głóna</a><br></p>
+        <p><a href="{% url 'home' %}">Strona główna</a><br></p>
         <p><a href="{% url 'about-me' %}">O mnie</a><br></p>
         <p><a href="{% url 'specialization' %}">Specjalizacje</a><br></p>
         <p><a href="{% url 'blog' %}">Blog</a><br></p>

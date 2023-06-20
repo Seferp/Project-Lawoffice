@@ -9,11 +9,15 @@
 <section id="about-me">
     <div>
         <a href="{% url 'about-me' %}">
-            <h2>O MNIE</h2>
         </a>
         <p>
-            „Bycie adwokatem to nie tylko wdrażanie paragrafów w życie i&nbsp;walka na sali sądowej. Świadcząc usługi prawne staram się, by w&nbsp;pierwszej kolejności Klient zrozumiał sytuację w jakiej się znalazł. Dlaczego? Ponieważ jeżeli nie wiemy co się dzieje, nie czujemy się bezpiecznie, a szanse na podjęcie korzystnych decyzji maleją. Dlatego w ramach współpracy staram się cierpliwie i prosto wyjaśnić problem prawny, z&nbsp;jakim Klient się boryka.
-            W prawie niewiele jest sytuacji bez wyjścia, ale by to wyjście znaleźć, najpierw musimy wiedzieć jakie jest nasze położenie i jak do tego doszło. Wtedy znajdziemy rozwiązanie pozwalające poczuć się bezpiecznie.”
+            „Bycie adwokatem to nie tylko wdrażanie paragrafów w życie i&nbsp;walka na sali sądowej. Świadcząc usługi prawne staram się,
+            by w&nbsp;pierwszej kolejności Klient zrozumiał sytuację w jakiej się znalazł.
+            Dlaczego? Ponieważ jeżeli nie wiemy co&nbsp;się dzieje, nie czujemy się bezpiecznie, a&nbsp;szanse na podjęcie korzystnych decyzji maleją.
+            Dlatego w&nbsp;ramach współpracy staram się cierpliwie i&nbsp;prosto wyjaśnić problem prawny, z&nbsp;jakim Klient się boryka.
+            W prawie niewiele jest sytuacji bez&nbsp;wyjścia, ale by to wyjście znaleźć,
+            najpierw musimy wiedzieć jakie jest nasze położenie i&nbsp;jak do tego doszło.
+            Wtedy znajdziemy rozwiązanie pozwalające poczuć się bezpiecznie.”
         </p>
         <a href="{% url 'about-me' %}">
             <img src="{% static 'my_site/images/podpis-szary.jpg' %}" alt="Adwokat Anna Seferyniak">
@@ -69,54 +73,54 @@
     </ul>
 </section>
 
-<!--<section id="shop">-->
-<!--    <a href="{% url 'shop' %}">-->
-<!--        <h2>SKLEP</h2>-->
-<!--    </a>-->
-<!--    <ul>-->
-<!--        <li>-->
-<!--            <article class="detail">-->
-<!--                {% for contract in contract %}-->
-<!--                    <a href="{% url 'contracts' %}">-->
-<!--                        {% if contract.image %}-->
-<!--                            <img src="{{ contract.image.url }}" alt="{{ contract.type }}">-->
-<!--                        {% endif %}-->
-<!--                         <div class="detail__content">-->
-<!--                            <h3>Umowy</h3>-->
-<!--                        </div>-->
-<!--                    </a>-->
-<!--                {% endfor %}-->
-<!--            </article>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--            <article class="detail">-->
-<!--                {% for writing in writing %}-->
-<!--                    <a href="{% url 'writings' %}">-->
-<!--                        {% if writing.image %}-->
-<!--                            <img src="{{ writing.image.url }}" alt="{{ writing.type }}">-->
-<!--                        {% endif %}-->
-<!--                        <div class="detail__content">-->
-<!--                            <h3>Pisma</h3>-->
-<!--                        </div>-->
-<!--                    </a>-->
-<!--                {% endfor %}-->
-<!--            </article>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--            <article class="detail">-->
-<!--                {% for lawsuit in lawsuit %}-->
-<!--                    <a href="{% url 'lawsuits' %}">-->
-<!--                        {% if lawsuit.image %}-->
-<!--                            <img src="{{ lawsuit.image.url }}" alt="{{ lawsuit.type }}">-->
-<!--                        {% endif %}-->
-<!--                        <div class="detail__content">-->
-<!--                            <h3>Pozwy</h3>-->
-<!--                        </div>-->
-<!--                    </a>-->
-<!--                {% endfor %}-->
-<!--            </article>-->
-<!--        </li>-->
-<!--    </ul>-->
-</section>
+<!--<section id="shop">
+    <a href="{% url 'shop' %}">
+        <h2>SKLEP</h2>
+    </a>
+    <ul>
+        <li>
+            <article class="detail">
+                {% for contract in contract %}
+                    <a href="{% url 'contracts' %}">
+                        {% if contract.image %}
+                            <img src="{{ contract.image.url }}" alt="{{ contract.type }}">
+                        {% endif %}
+                         <div class="detail__content">
+                            <h3>Umowy</h3>
+                        </div>
+                    </a>
+                {% endfor %}
+            </article>
+        </li>
+        <li>
+            <article class="detail">
+                {% for writing in writing %}
+                    <a href="{% url 'writings' %}">
+                        {% if writing.image %}
+                            <img src="{{ writing.image.url }}" alt="{{ writing.type }}">
+                        {% endif %}
+                        <div class="detail__content">
+                            <h3>Pisma</h3>
+                        </div>
+                    </a>
+                {% endfor %}
+            </article>
+        </li>
+        <li>
+            <article class="detail">
+                {% for lawsuit in lawsuit %}
+                    <a href="{% url 'lawsuits' %}">
+                        {% if lawsuit.image %}
+                            <img src="{{ lawsuit.image.url }}" alt="{{ lawsuit.type }}">
+                        {% endif %}
+                        <div class="detail__content">
+                            <h3>Pozwy</h3>
+                        </div>
+                    </a>
+                {% endfor %}
+            </article>
+        </li>
+    </ul>
+</section>-->
 
 {% endblock %}

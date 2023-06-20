@@ -5,6 +5,10 @@
     text-align: center;
 }
 
+h1 {
+    font-size: 30px;
+}
+
 #banner {
     padding-bottom: 10px;
 }
@@ -62,4 +66,85 @@
 .post:hover time,
 .post:active time {
   color: white;
+}
+
+.post p {
+    font-size: 19px;
+}
+
+@media (max-width: 768px) {
+    #main-page {
+        background-color: #ffffff;
+        padding: 2rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    #banner {
+        padding-bottom: 10px;
+    }
+
+    #main-page ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    #main-page li {
+      flex: 1;
+      width: 60%;
+    }
+
+    .post {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .post__content {
+        width: 15rem;
+    }
+
+    .post a {
+      text-decoration: none;
+      color: black;
+      transition: all 0.2s ease;
+      padding: 1rem;
+    }
+
+    .post a:hover,
+    .post a:active {
+      transform: scale(1.1);
+      background-color: #FCA311;
+      border-radius: 12px;
+    }
+
+    .post img {
+      width: 15rem;
+      height: 15rem;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid black;
+    }
+
+    .post h3 {
+      margin: 0.25rem 0;
+    }
+
+    .post:hover time,
+    .post:active time {
+      color: white;
+    }
+
+    .post p {
+        font-size: 19px;
+    }
 }

@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from django.utils.html import format_html, mark_safe
 
 # Create your models here.
 
@@ -17,7 +18,6 @@ class Post(models.Model):
     slug = models.SlugField()
     content = models.TextField()
     tag = models.ManyToManyField(Tag)
-
 
 class Comment(models.Model):
     user_name = models.CharField(max_length=150)

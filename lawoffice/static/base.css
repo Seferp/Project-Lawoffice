@@ -40,6 +40,7 @@ body {
     display: absolute;
     justify-content: center;
     align-items: center;
+
 }
 
 #main-navigation button {
@@ -129,6 +130,7 @@ footer h3 {
         right: 0;
         background-color: #ffffff;
         padding: 10px;
+        transition: max-height .5s, opacity 0.3s;
     }
 
     #main-navigation input[type="checkbox"]:checked ~ nav {

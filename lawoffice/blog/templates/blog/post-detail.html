@@ -20,7 +20,7 @@
         </div>
         <div id="post">
             <div class="content">
-                <pre><code>{{ post.content }}</code></pre>
+                <pre><code>{{ post.content|safe }}</code></pre>
             </div>
             <p>Ostatnio modyfikowany: {{ post.date|date:"d.m.Y" }}</p>
         </div>

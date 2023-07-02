@@ -10,7 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+
 from pathlib import Path
+from .data import user, password
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-xqbvj=l9ugehr7=q2z81*!iutgqzl0m*wm%bu5#=15ocyu*91m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -83,22 +85,14 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'p1276_kancelaria',
-    #     'USER': 'Seferyniak',
-    #     'PASSWORD': 'JCD321aghprb#',
-    #     'HOST': 'kancelaria-seferyniak.pl',
-    #     'PORT': '5432',
-    # }
 }
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'p.seferyniak.test@gmail.com'
-EMAIL_HOST_PASSWORD = 'mdgyzxrgxuxxaanm'
+EMAIL_HOST_USER = user
+EMAIL_HOST_PASSWORD = password
 EMAIL_USE_TLS = True
 
 

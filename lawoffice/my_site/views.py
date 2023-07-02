@@ -7,11 +7,13 @@ from django.core.mail import send_mail
 from .models import FAQ, Specialization
 from .forms import ContactForm
 
+import re
+
 # Create your views here.
 
 class Home(View):
     def get_last_posts(self):
-        posts = Post.objects.all().order_by('-date')
+        posts = Post.objects.all().order_by('-id')
         return posts[:3]
     def get_specializations(self):
         specializations = Specialization.objects.all().order_by('id')
@@ -50,10 +52,10 @@ def contact_view(request):
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
             send_mail(
-                'Kontakt z formularza',
+                f'Kontakt z formularza - {subject}',
                 f'Imię: {first_name}\nNazwisko: {last_name}\nEmail: {email}\nTemat: {subject}\nWiadomość: {message}',
                 email,
-                ['p.seferyniak.test@gmail.com'],
+                ['kan.seferyniak@gmail.com'],
                 fail_silently=False,
             )
             return redirect('contact')
@@ -73,9 +75,21 @@ class Specializations(ListView):
     ordering = ['id']
     context_object_name = 'specializations'
 
+
 class SpecializationsDetail(DetailView):
     model = Specialization
     template_name = 'my_site/specialization-detail.html'
 
+    def get(self, request, slug):
+        specialization = Specialization.objects.get(slug=slug)
+        specialization.description = self.add_hard_space(specialization.description)
 
+        context = {
+            "specialization": specialization,
+        }
+        return render(request, "my_site/specialization-detail.html", context)
 
+    def add_hard_space(self, text):
+        regex = r"\b([a-zA-Z]{1,3})\s?\b"
+        new_text = re.sub(regex, r'\1&nbsp;', text)
+        return new_text

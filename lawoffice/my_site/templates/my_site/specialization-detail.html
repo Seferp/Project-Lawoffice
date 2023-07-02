@@ -12,7 +12,7 @@
             <img src="{{ specialization.image.url }}" alt="{{ specialization.name }}">
         {% endif %}
         <div class="desc">
-            <pre><code>{{ specialization.description }}</code></pre>
+            <pre><code>{{ specialization.description|safe }}</code></pre>
         </div>
     </div>
 {% endblock %}

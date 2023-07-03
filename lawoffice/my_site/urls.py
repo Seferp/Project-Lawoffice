@@ -8,4 +8,6 @@ urlpatterns = [
     path('faq', views.FAQ.as_view(), name='faq'),
     path('specjalizacje', views.Specializations.as_view(), name='specialization'),
     path('specjalizacje/<slug:slug>', views.SpecializationsDetail.as_view(), name='specialization-detail'),
+    path('klauzula-informacyjna', views.information_clause_view, name='information-clause'),
+    path('polityka-prywatnosci', views.privacy_policy_view, name='privacy_policy'),
 ]

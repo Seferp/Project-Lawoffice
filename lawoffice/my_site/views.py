@@ -93,3 +93,9 @@ class SpecializationsDetail(DetailView):
         regex = r"\b([a-zA-Z]{1,3})\s?\b"
         new_text = re.sub(regex, r'\1&nbsp;', text)
         return new_text
+
+def privacy_policy_view(request):
+    return render(request, 'my_site/privacy-policy.html')
+
+def information_clause_view(request):
+    return render(request, 'my_site/information-clause.html')

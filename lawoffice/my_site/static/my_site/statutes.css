@@ -1,0 +1,15 @@
+#statutes {
+    font-size: 19px;
+
+}
+
+#all {
+    max-width: 90%;
+    margin: 5%;
+    box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.5);
+    border: 1px solid #D2D2D1;
+}
+
+#content {
+    margin: 5%;
+}

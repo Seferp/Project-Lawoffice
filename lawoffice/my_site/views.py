@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, View, DetailView
-from ..blog.models import Post
-from ..shop.models import Document
+from blog.models import Post
+from shop.models import Document
 from django.core.mail import send_mail
 from .models import FAQ, Specialization
 from .forms import ContactForm

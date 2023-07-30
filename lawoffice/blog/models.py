@@ -1,6 +1,4 @@
 from django.db import models
-from datetime import datetime
-from django.utils.html import format_html, mark_safe
 
 # Create your models here.
 

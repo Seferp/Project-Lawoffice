@@ -10,7 +10,6 @@
                 <th>Nazwa przedmiotu</th>
                 <th>Ilość</th>
                 <th>Cena</th>
-                <th>Cena całkowita</th>
                 <th>Akcja</th>
             </tr>
         </thead>
@@ -20,7 +19,6 @@
                 <td>{{ cart_item.item.name }}</td>
                 <td>{{ cart_item.quantity }}</td>
                 <td>{{ cart_item.item.price }}</td>
-                <td>{{ total_price }}</td>
                 <td>
                     <a href="{% url 'remove-from-cart' cart_item.id %}">Usuń z koszyka</a>
                 </td>
@@ -29,7 +27,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="3">Cena całkowita:</td>
+                <td colspan="2">Cena całkowita:</td>
                 <td>{{ total_price }}</td>
                 <td></td>
             </tr>

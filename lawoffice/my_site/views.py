@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, View, DetailView
-from ..blog.models import Post
-from ..shop.models import Document
+from blog.models import Post
+from shop.models import Document
 from django.core.mail import send_mail
 from .models import FAQ, Specialization
 from .forms import ContactForm
@@ -17,13 +17,13 @@ class Home(View):
         specializations = Specialization.objects.all().order_by('id')
         return specializations
     def get_contract(self):
-        contract = Document.objects.filter(type='Umowa')
+        contract = Document.objects.filter(type='Umowy')
         return contract
     def get_writing(self):
-        writing = Document.objects.filter(type='Pismo')
+        writing = Document.objects.filter(type='Pisma')
         return writing
     def get_lawsuit(self):
-        lawsuit = Document.objects.filter(type='Pozew')
+        lawsuit = Document.objects.filter(type='Pozwy')
         return lawsuit
 
 

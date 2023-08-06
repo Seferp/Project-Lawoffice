@@ -22,7 +22,7 @@
                                 <img src="{{ contract.image.url }}" alt="{{ contract.type }}">
                             {% endif %}
                              <div class="detail__content">
-                                <h3>Umowy</h3>
+                                <h3>{{ contract.type }}</h3>
                             </div>
                         </a>
                     {% endfor %}
@@ -36,7 +36,7 @@
                                 <img src="{{ writing.image.url }}" alt="{{ writing.type }}">
                             {% endif %}
                             <div class="detail__content">
-                                <h3>Pisma</h3>
+                                <h3>{{ writing.type }}</h3>
                             </div>
                         </a>
                     {% endfor %}
@@ -50,7 +50,7 @@
                                 <img src="{{ lawsuit.image.url }}" alt="{{ lawsuit.type }}">
                             {% endif %}
                             <div class="detail__content">
-                                <h3>Pozwy</h3>
+                                <h3>{{ lawsuit.type }}</h3>
                             </div>
                         </a>
                     {% endfor %}

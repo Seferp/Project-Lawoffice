@@ -8,13 +8,13 @@ from .models import Item, Cart, Document
 class ShopHomePage(View):
 
     def get_contract(self):
-        contract = Document.objects.filter(type='Umowa')
+        contract = Document.objects.filter(type='Umowy')
         return contract
     def get_writing(self):
-        writing = Document.objects.filter(type='Pismo')
+        writing = Document.objects.filter(type='Pisma')
         return writing
     def get_lawsuit(self):
-        lawsuit = Document.objects.filter(type='Pozew')
+        lawsuit = Document.objects.filter(type='Pozwy')
         return lawsuit
 
 
@@ -25,15 +25,13 @@ class ShopHomePage(View):
         return render(request, 'shop/shop-main-page.html', {'contract': contract, 'writing': writing, 'lawsuit': lawsuit})
 
 
-
-
 class Contracts(ListView):
     model = Item
     template_name = 'shop/contracts-view.html'
     context_object_name = 'contracts'
 
     def get_queryset(self):
-        return Item.objects.filter(type__type='Umowa')
+        return Item.objects.filter(type__type='Umowy')
 
 
 class Lawsuit(ListView):
@@ -42,7 +40,7 @@ class Lawsuit(ListView):
     context_object_name = 'lawsuits'
 
     def get_queryset(self):
-        return Item.objects.filter(type__type='Pozew')
+        return Item.objects.filter(type__type='Pozwy')
 
 
 class Writings(ListView):
@@ -51,7 +49,7 @@ class Writings(ListView):
     context_object_name = 'writings'
 
     def get_queryset(self):
-        return Item.objects.filter(type__type='Pismo')
+        return Item.objects.filter(type__type='Pisma')
 
 
 class ItemDetail(DetailView):

@@ -1,5 +1,6 @@
 from django.test import TestCase, Client
 from django.urls import reverse, resolve
+from django.core.files.uploadedfile import SimpleUploadedFile
 from .views import BlogHomePage, SinglePost
 from .models import Tag, Post, Comment
 
@@ -13,7 +14,8 @@ class BlogHomePageTest(TestCase):
         self.Post = Post.objects.create(
             title='Test name',
             excerpt='Test short excerpt',
-            slug='test-name'
+            slug='test-name',
+            image=SimpleUploadedFile('test_post_image.jpg', b'Image content')
         )
         self.url = reverse('blog')
         self.client = Client()
@@ -31,6 +33,8 @@ class BlogHomePageTest(TestCase):
     def test_blog_home_content(self):
         self.assertContains(self.response, self.Post.title)
         self.assertContains(self.response, self.Post.excerpt)
+        self.assertContains(self.response, self.Post.image)
+        self.assertTrue(self.Post.image.name.endswith('.jpg'))
 
 class PostDetailTest(TestCase):
     def setUp(self):
@@ -42,6 +46,7 @@ class PostDetailTest(TestCase):
             date=date.today().strftime('%d.%m.%Y'),
             slug='test-name',
             content='Test description',
+            image=SimpleUploadedFile('test_post_image.jpg', b'Image content')
         )
         self.Post.tag.add(self.Tag)
         self.Comment = Comment.objects.create(
@@ -71,6 +76,8 @@ class PostDetailTest(TestCase):
         expected_date = self.Post.date.strftime('%d.%m.%Y')
         self.assertContains(self.response, expected_date)
         self.assertContains(self.response, self.Post.content)
+        self.assertContains(self.response, self.Post.image)
+        self.assertTrue(self.Post.image.name.endswith('.jpg'))
 
     def test_post_detail_comment(self):
         self.assertContains(self.response, self.Comment.user_name)

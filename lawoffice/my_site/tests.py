@@ -2,6 +2,7 @@ from django.test import TestCase, Client
 from django.urls import reverse, resolve
 from .views import Home, about_me_view, contact_view, FAQ, Specializations, SpecializationsDetail,\
     privacy_policy_view, information_clause_view
+from django.core.files.uploadedfile import SimpleUploadedFile
 from .models import FAQ as FAQ_model, Specialization
 from blog.models import Post
 from shop.models import Document
@@ -14,19 +15,30 @@ class HomeTest(TestCase):
 
     def setUp(self):
 
-        self.Document_contract = Document.objects.create(type='Umowa')
-        self.Document_writing = Document.objects.create(type='Pismo')
-        self.Document_lawsuit = Document.objects.create(type='Pozew')
+        self.Document_contract = Document.objects.create(
+            type='Umowy',
+            image=SimpleUploadedFile('test_contract_image.jpg', b'Image content')
+        )
+        self.Document_writing = Document.objects.create(
+            type='Pisma',
+            image=SimpleUploadedFile('test_writing_image.jpg', b'Image content')
+        )
+        self.Document_lawsuit = Document.objects.create(
+            type='Pozwy',
+            image=SimpleUploadedFile('test_lawsuit_image.jpg', b'Image content')
+        )
 
         self.Specialization = Specialization.objects.create(
             name='Test',
-            slug='test'
+            slug='test',
+            image=SimpleUploadedFile('test_specialization_image.jpg', b'Image content')
         )
         self.Post = Post.objects.create(
             title='Test title',
             excerpt='Test short excerpt',
             date=date.today().strftime('%d.%m.%Y'),
             slug='test-title',
+            image=SimpleUploadedFile('test_post_image.jpg', b'Image content')
         )
         self.url = reverse('home')
         self.client = Client()
@@ -43,17 +55,31 @@ class HomeTest(TestCase):
 
     def test_home_content_specialization(self):
         self.assertContains(self.response, self.Specialization.name)
+        self.assertContains(self.response, self.Specialization.image)
+        self.assertTrue(self.Specialization.image.name.endswith('.jpg'))
 
     def test_home_content_post(self):
         self.assertContains(self.response, self.Post.title)
         self.assertContains(self.response, self.Post.excerpt)
         expected_date = self.Post.date.strftime('%d.%m.%Y')
         self.assertContains(self.response, expected_date)
+        self.assertContains(self.response, self.Post.image)
+        self.assertTrue(self.Post.image.name.endswith('.jpg'))
 
-    def test_home_content_document(self):
-        self.assertEqual(self.Document_contract.type, 'Umowa')
-        self.assertEqual(self.Document_writing.type, 'Pismo')
-        self.assertEqual(self.Document_lawsuit.type, 'Pozew')
+
+    def test_home_content_shop(self):
+        self.assertContains(self.response, self.Document_contract.type)
+        self.assertContains(self.response, self.Document_contract.image)
+        self.assertTrue(self.Document_contract.image.name.endswith('.jpg'))
+
+        self.assertContains(self.response, self.Document_writing.type)
+        self.assertContains(self.response, self.Document_writing.image)
+        self.assertTrue(self.Document_writing.image.name.endswith('.jpg'))
+
+        self.assertContains(self.response, self.Document_lawsuit.type)
+        self.assertContains(self.response, self.Document_lawsuit.image)
+        self.assertTrue(self.Document_lawsuit.image.name.endswith('.jpg'))
+
 
 class AboutMeTest(TestCase):
     def setUp(self):
@@ -116,7 +142,8 @@ class SpecializationTest(TestCase):
         self.Specialization = Specialization.objects.create(
             name='Test',
             excerpt='Test excerpt',
-            slug='test'
+            slug='test',
+            image=SimpleUploadedFile('test_specialization_image.jpg', b'Image content')
         )
         self.url = reverse('specialization')
         self.client = Client()
@@ -134,6 +161,8 @@ class SpecializationTest(TestCase):
     def test_specialization_content(self):
         self.assertContains(self.response, self.Specialization.name)
         self.assertContains(self.response, self.Specialization.excerpt)
+        self.assertContains(self.response, self.Specialization.image)
+        self.assertTrue(self.Specialization.image.name.endswith('.jpg'))
 
 
 class SpecializationDetailTest(TestCase):
@@ -142,7 +171,8 @@ class SpecializationDetailTest(TestCase):
             name='Test',
             description='Test description',
             excerpt='Test excerpt',
-            slug='test'
+            slug='test',
+            image=SimpleUploadedFile('test_specialization_image.jpg', b'Image content')
         )
         self.url = reverse('specialization-detail', kwargs={'slug': self.specialization.slug})
         self.client = Client()
@@ -158,7 +188,10 @@ class SpecializationDetailTest(TestCase):
         self.assertTemplateUsed(self.response, 'my_site/specialization-detail.html')
 
     def test_specialization_detail_content(self):
+        self.assertContains(self.response, self.specialization.name)
         self.assertContains(self.response, self.specialization.description)
+        self.assertContains(self.response, self.specialization.image)
+        self.assertTrue(self.specialization.image.name.endswith('.jpg'))
 
 
 class InformationClauseTest(TestCase):

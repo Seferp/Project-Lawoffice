@@ -17,13 +17,13 @@ class Home(View):
         specializations = Specialization.objects.all().order_by('id')
         return specializations
     def get_contract(self):
-        contract = Document.objects.filter(type='Umowa')
+        contract = Document.objects.filter(type='Umowy')
         return contract
     def get_writing(self):
-        writing = Document.objects.filter(type='Pismo')
+        writing = Document.objects.filter(type='Pisma')
         return writing
     def get_lawsuit(self):
-        lawsuit = Document.objects.filter(type='Pozew')
+        lawsuit = Document.objects.filter(type='Pozwy')
         return lawsuit
 
 

@@ -1,6 +1,7 @@
-from django.test import TestCase, Client
+from django.test import TestCase, Client, TransactionTestCase
 from django.urls import reverse, resolve
-from .views import ShopHomePage, Contracts, Lawsuit, Writings, ItemDetail, cart_view
+from django.core.files.uploadedfile import SimpleUploadedFile
+from .views import ShopHomePage, Contracts, Lawsuit, Writings, ItemDetail, cart_view, add_to_cart
 from .models import Document, Item, Cart
 
 # Create your tests here.
@@ -9,27 +10,17 @@ from .models import Document, Item, Cart
 class ShopHomeTest(TestCase):
 
     def setUp(self):
-        self.Document_contract = Document.objects.create(type='Umowa')
-        self.Document_writing = Document.objects.create(type='Pismo')
-        self.Document_lawsuit = Document.objects.create(type='Pozew')
-
-        self.Item_contract = Item.objects.create(
-            name='Test name contract',
-            slug='test-name-contract',
-            price='10',
-            type=self.Document_contract
+        self.Document_contract = Document.objects.create(
+            type='Umowy',
+            image=SimpleUploadedFile('test_contract_image.jpg', b'Image content')
         )
-        self.Item_writing = Item.objects.create(
-            name='Test name writing',
-            slug='test-name-writing',
-            price='10',
-            type=self.Document_writing
+        self.Document_writing = Document.objects.create(
+            type='Pisma',
+            image=SimpleUploadedFile('test_writing_image.jpg', b'Image content')
         )
-        self.Item_lawsuit = Item.objects.create(
-            name='Test name lawsuit',
-            slug='test-name-lawsuit',
-            price='10',
-            type=self.Document_lawsuit
+        self.Document_lawsuit = Document.objects.create(
+            type='Pozwy',
+            image=SimpleUploadedFile('test_lawsuit_image.jpg', b'Image content')
         )
 
         self.url = reverse('shop')
@@ -46,26 +37,31 @@ class ShopHomeTest(TestCase):
         self.assertTemplateUsed(self.response, 'shop/shop-main-page.html')
 
     def test_shop_home_content_document(self):
-        self.assertEqual(self.Document_contract.type, 'Umowa')
-        self.assertEqual(self.Document_writing.type, 'Pismo')
-        self.assertEqual(self.Document_lawsuit.type, 'Pozew')
+        self.assertContains(self.response, self.Document_contract.type)
+        self.assertContains(self.response, self.Document_contract.image)
+        self.assertTrue(self.Document_contract.image.name.endswith('.jpg'))
 
-    def test_shop_home_item(self):
-        self.assertEqual(self.Item_contract.type, self.Document_contract)
-        self.assertEqual(self.Item_writing.type, self.Document_writing)
-        self.assertEqual(self.Item_lawsuit.type, self.Document_lawsuit)
+        self.assertContains(self.response, self.Document_writing.type)
+        self.assertContains(self.response, self.Document_writing.image)
+        self.assertTrue(self.Document_writing.image.name.endswith('.jpg'))
+
+        self.assertContains(self.response, self.Document_lawsuit.type)
+        self.assertContains(self.response, self.Document_lawsuit.image)
+        self.assertTrue(self.Document_lawsuit.image.name.endswith('.jpg'))
 
 
 class ContractsTest(TestCase):
     def setUp(self):
         self.Document = Document.objects.create(
-            type='Umowa'
+            type='Umowy'
         )
         self.Item = Item.objects.create(
             name='Test name',
             slug='test-name',
             type=self.Document,
-            price='10.00'
+            price='10.00',
+            image=SimpleUploadedFile('test_item_image.jpg', b'Image content')
+
         )
         self.url = reverse('contracts')
         self.client = Client()
@@ -82,19 +78,21 @@ class ContractsTest(TestCase):
 
     def test_contracts_content(self):
         self.assertContains(self.response, self.Item.name)
+        self.assertContains(self.response, self.Item.image)
+        self.assertTrue(self.Item.image.name.endswith('.jpg'))
 
-    # def test_contracts_
 
 class LawsuitsTest(TestCase):
     def setUp(self):
         self.Document = Document.objects.create(
-            type='Pozew'
+            type='Pozwy'
         )
         self.Item = Item.objects.create(
             name='Test name',
             slug='test-name',
             type=self.Document,
-            price=10.00
+            price=10.00,
+            image=SimpleUploadedFile('test_item_image.jpg', b'Image content')
         )
         self.url = reverse('lawsuits')
         self.client = Client()
@@ -111,17 +109,20 @@ class LawsuitsTest(TestCase):
 
     def test_lawsuits_content(self):
         self.assertContains(self.response, self.Item.name)
+        self.assertContains(self.response, self.Item.image)
+        self.assertTrue(self.Item.image.name.endswith('.jpg'))
 
 class WritingsTest(TestCase):
     def setUp(self):
         self.Document = Document.objects.create(
-            type='Pismo'
+            type='Pisma'
         )
         self.Item = Item.objects.create(
             name='Test name',
             slug='test-name',
             type=self.Document,
-            price=10.00
+            price=10.00,
+            image=SimpleUploadedFile('test_item_image.jpg', b'Image content')
         )
         self.url = reverse('writings')
         self.client = Client()
@@ -138,6 +139,8 @@ class WritingsTest(TestCase):
 
     def test_writings_content(self):
         self.assertContains(self.response, self.Item.name)
+        self.assertContains(self.response, self.Item.image)
+        self.assertTrue(self.Item.image.name.endswith('.jpg'))
 
 class ItemDetailContractTest(TestCase):
     def setUp(self):
@@ -149,7 +152,9 @@ class ItemDetailContractTest(TestCase):
             slug='test-name',
             description='Test description',
             type=self.Document,
-            price=10.00
+            price=10.00,
+            file=SimpleUploadedFile('test_item_file.pdf', b'File content'),
+            image=SimpleUploadedFile('test_item_image.jpg', b'Image content')
         )
         self.url = reverse('contract-detail', kwargs={'slug': self.Item.slug})
         self.client = Client()
@@ -168,6 +173,9 @@ class ItemDetailContractTest(TestCase):
         self.assertContains(self.response, self.Item.name)
         self.assertContains(self.response, self.Item.description)
         self.assertContains(self.response, str(self.Item.price))
+        self.assertContains(self.response, self.Item.image)
+        self.assertTrue(self.Item.image.name.endswith('.jpg'))
+        self.assertTrue(self.Item.file.name.endswith('.pdf'))
 
 class ItemDetailLawsuitTest(TestCase):
     def setUp(self):
@@ -179,25 +187,32 @@ class ItemDetailLawsuitTest(TestCase):
             slug='test-name',
             description='Test description',
             type=self.Document,
-            price=10.00
+            price=10.00,
+            file=SimpleUploadedFile('test_item_file.pdf', b'File content'),
+            image=SimpleUploadedFile('test_item_image.jpg', b'Image content')
         )
         self.url = reverse('lawsuit-detail', kwargs={'slug': self.Item.slug})
         self.client = Client()
         self.response = self.client.get(self.url)
 
-    def test_item_detail_contract_url(self):
+    def test_item_detail_lawsuit_url(self):
         self.assertEqual(resolve(self.url).func.view_class, ItemDetail.as_view().view_class)
 
-    def test_item_detail_contract_view(self):
+    def test_item_detail_lawsuit_view(self):
         self.assertEqual(self.response.status_code, 200)
 
-    def test_item_detail_contract_view_template(self):
+    def test_item_detail_lawsuit_view_template(self):
         self.assertTemplateUsed(self.response, 'shop/item-detail.html')
 
-    def test_item_detail_contract_content(self):
+    def test_item_detail_lawsuit_content(self):
         self.assertContains(self.response, self.Item.name)
         self.assertContains(self.response, self.Item.description)
         self.assertContains(self.response, str(self.Item.price))
+        self.assertContains(self.response, self.Item.image)
+        self.assertTrue(self.Item.image.name.endswith('.jpg'))
+        self.assertTrue(self.Item.file.name.endswith('.pdf'))
+
+
 class ItemDetailWritingTest(TestCase):
     def setUp(self):
         self.Document = Document.objects.create(
@@ -208,43 +223,34 @@ class ItemDetailWritingTest(TestCase):
             slug='test-name',
             description='Test description',
             type=self.Document,
-            price=10.00
+            price=10.00,
+            file=SimpleUploadedFile('test_item_file.pdf', b'File content'),
+            image=SimpleUploadedFile('test_item_image.jpg', b'Image content')
         )
         self.url = reverse('writing-detail', kwargs={'slug': self.Item.slug})
         self.client = Client()
         self.response = self.client.get(self.url)
 
-    def test_item_detail_contract_url(self):
+    def test_item_detail_writing_url(self):
         self.assertEqual(resolve(self.url).func.view_class, ItemDetail.as_view().view_class)
 
-    def test_item_detail_contract_view(self):
+    def test_item_detail_writing_view(self):
         self.assertEqual(self.response.status_code, 200)
 
-    def test_item_detail_contract_view_template(self):
+    def test_item_detail_writing_view_template(self):
         self.assertTemplateUsed(self.response, 'shop/item-detail.html')
 
-    def test_item_detail_contract_content(self):
+    def test_item_detail_writing_content(self):
         self.assertContains(self.response, self.Item.name)
         self.assertContains(self.response, self.Item.description)
         self.assertContains(self.response, str(self.Item.price))
+        self.assertContains(self.response, self.Item.image)
+        self.assertTrue(self.Item.image.name.endswith('.jpg'))
+        self.assertTrue(self.Item.file.name.endswith('.pdf'))
 
 
 class CartTest(TestCase):
     def setUp(self):
-        self.Document = Document.objects.create(
-            type='pisma'
-        )
-        self.Item = Item.objects.create(
-            name='Test name',
-            slug='test-name',
-            description='Test description',
-            type=self.Document,
-            price=10.00
-        )
-        self.Cart = Cart.objects.create(
-            item=self.Item,
-            quantity=1
-        )
         self.url = reverse('cart')
         self.client = Client()
         self.response = self.client.get(self.url)
@@ -257,11 +263,29 @@ class CartTest(TestCase):
 
     def test_cart_view_template(self):
         self.assertTemplateUsed(self.response, 'shop/cart.html')
+class AddT0CartTest(TestCase):
 
-    def test_cart_view_content(self):
-        self.assertContains(self.response, self.Item.name)
-        self.assertContains(self.response, str(self.Cart.quantity))
-        self.assertContains(self.response, str(self.Item.price))
-        total_price = str(self.Cart.quantity*self.Item.price)
-        self.assertContains(self.response, total_price)
-
+    def setUp(self):
+        self.client = Client()
+        self.Document = Document.objects.create(
+            type='pisma'
+        )
+        self.item = Item.objects.create(
+            name='Test name',
+            slug='test-name',
+            type=self.Document,
+            price=10.00,
+        )
+    def test_add_to_cart_url(self):
+        url = reverse('add-to-cart', args=[self.item.slug])
+        self.assertEqual(resolve(url).func, add_to_cart)
+    def test_add_to_cart_view(self):
+        url = reverse('add-to-cart', args=[self.item.slug])
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 302)
+    def test_add_to_cart(self):
+        url = reverse('add-to-cart', args=[self.item.slug])
+        response = self.client.get(url)
+        cart = Cart.objects.get(item=self.item)
+        self.assertEqual(cart.item, self.item)
+        self.assertEqual(cart.quantity, 1)

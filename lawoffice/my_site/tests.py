@@ -3,11 +3,13 @@ from django.urls import reverse, resolve
 from .views import Home, about_me_view, contact_view, FAQ, Specializations, SpecializationsDetail,\
     privacy_policy_view, information_clause_view
 from django.core.files.uploadedfile import SimpleUploadedFile
-from .models import FAQ as FAQ_model, Specialization
+from .models import FAQ as FAQ_model, Specialization, Contact
+from.forms import ContactForm
 from blog.models import Post
 from shop.models import Document
 
 from datetime import date
+
 # Create your tests here.
 
 
@@ -65,7 +67,6 @@ class HomeTest(TestCase):
         self.assertContains(self.response, expected_date)
         self.assertContains(self.response, self.Post.image)
         self.assertTrue(self.Post.image.name.endswith('.jpg'))
-
 
     def test_home_content_shop(self):
         self.assertContains(self.response, self.Document_contract.type)
@@ -224,3 +225,78 @@ class PrivacyPolicyTest(TestCase):
 
     def test_privacy_policy_view_template(self):
         self.assertTemplateUsed(self.response, 'my_site/privacy-policy.html')
+
+
+class FAQModelTest(TestCase):
+    def setUp(self):
+        self.faq = FAQ_model.objects.create(
+            question='Test question',
+            answer='Test answer'
+        )
+
+    def test_faq_model(self):
+        self.assertTrue(isinstance(self.faq, FAQ_model))
+        self.assertEqual(self.faq.question, 'Test question')
+        self.assertEqual(self.faq.answer, 'Test answer')
+
+
+class SpecializationModelTest(TestCase):
+    def setUp(self):
+        self.specialization = Specialization.objects.create(
+            name='Test name',
+            description='Test description',
+            excerpt='Test excerpt',
+            slug='test-name',
+        )
+
+    def test_specialization_model(self):
+        self.assertTrue(isinstance(self.specialization, Specialization))
+        self.assertEqual(self.specialization.name, 'Test name')
+        self.assertEqual(self.specialization.description, 'Test description')
+        self.assertEqual(self.specialization.excerpt, 'Test excerpt')
+        self.assertEqual(self.specialization.slug, 'test-name')
+
+
+class ContactModelTest(TestCase):
+    def setUp(self):
+        self.contact = Contact.objects.create(
+            first_name='Test name',
+            last_name='Test last name',
+            email='Test email',
+            subject='Test subject',
+            message='Test message'
+        )
+
+    def test_contact_model(self):
+        self.assertTrue(isinstance(self.contact, Contact))
+        self.assertTrue(self.contact.first_name, 'Test name')
+        self.assertTrue(self.contact.last_name, 'Test last name')
+        self.assertTrue(self.contact.email, 'Test email')
+        self.assertTrue(self.contact.subject, 'Test subject')
+        self.assertTrue(self.contact.message, 'Test message')
+
+
+class ContactFormTest(TestCase):
+    def setUp(self):
+        self.data_valid = {
+            'first_name': 'Test name',
+            'last_name': 'Test last name',
+            'email': 'test_email@test.com',
+            'subject': 'Test subject',
+            'message': 'Test message'
+        }
+        self.data_invalid = {
+            'first_name': 'Test name',
+            'last_name': 'Test last name',
+            'email': 'test',
+            'subject': 'Test subject',
+            'message': 'Test message'
+        }
+        self.contact_from_valid = ContactForm(data=self.data_valid)
+        self.contact_from_invalid = ContactForm(data=self.data_invalid)
+
+    def test_contact_form_valid(self):
+        self.assertTrue(self.contact_from_valid.is_valid())
+
+    def test_contact_form_invalid(self):
+        self.assertFalse(self.contact_from_invalid.is_valid())

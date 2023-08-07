@@ -4,6 +4,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from .views import ShopHomePage, Contracts, Lawsuit, Writings, ItemDetail, cart_view, add_to_cart
 from .models import Document, Item, Cart
 
+from datetime import date
 # Create your tests here.
 
 
@@ -289,3 +290,63 @@ class AddT0CartTest(TestCase):
         cart = Cart.objects.get(item=self.item)
         self.assertEqual(cart.item, self.item)
         self.assertEqual(cart.quantity, 1)
+
+
+class DocumentModelTest(TestCase):
+    def setUp(self):
+        self.document = Document.objects.create(
+            type='Test type'
+        )
+
+    def test_document_model(self):
+        self.assertTrue(isinstance(self.document, Document))
+        self.assertTrue(self.document.type, 'Test type')
+
+
+class ItemModelTest(TestCase):
+    def setUp(self):
+        self.document = Document.objects.create(
+            type='Test type'
+        )
+        self.item = Item.objects.create(
+            name='Test name',
+            slug='test-name',
+            description='Test description',
+            type= self.document,
+            price=10
+        )
+
+    def test_document_model(self):
+        self.assertTrue(isinstance(self.item, Item))
+        self.assertTrue(self.item.name, 'Test name')
+        self.assertTrue(self.item.slug, 'test-name')
+        self.assertTrue(self.item.description, 'Test description')
+        self.assertTrue(self.item.type, self.document)
+        self.assertTrue(self.item.price, 10)
+
+
+class CartModelTest(TestCase):
+    def setUp(self):
+        self.document = Document.objects.create(
+            type='Test type'
+        )
+        self.item = Item.objects.create(
+            name='Test name',
+            slug='test-name',
+            description='Test description',
+            type= self.document,
+            price=10
+        )
+        self.cart = Cart.objects.create(
+            session_id='Test session',
+            item=self.item,
+            quantity=1,
+            created_at=date.today()
+        )
+
+    def test_document_model(self):
+        self.assertTrue(isinstance(self.cart, Cart))
+        self.assertTrue(self.cart.session_id, 'Test session')
+        self.assertTrue(self.cart.item, self.item)
+        self.assertTrue(self.cart.quantity, 1)
+        self.assertTrue(self.cart.created_at, date.today())

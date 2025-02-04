@@ -29,7 +29,6 @@ class Migration(migrations.Migration):
                 ('date', models.DateField(auto_now=True)),
                 ('slug', models.SlugField()),
                 ('content', models.TextField()),
-                ('tag', models.ManyToManyField(to='blog.tag')),
             ],
         ),
         migrations.CreateModel(

@@ -2,7 +2,7 @@ from django.test import TestCase, Client
 from django.urls import reverse, resolve
 from django.core.files.uploadedfile import SimpleUploadedFile
 from .views import BlogHomePage, SinglePost
-from .models import Tag, Post, Comment
+from .models import Post, Comment
 from .forms import CommentForm
 
 from datetime import date
@@ -39,9 +39,6 @@ class BlogHomePageTest(TestCase):
 
 class PostDetailTest(TestCase):
     def setUp(self):
-        self.Tag = Tag.objects.create(
-            caption='Test tag'
-        )
         self.Post = Post.objects.create(
             title='Test name',
             date=date.today().strftime('%d.%m.%Y'),
@@ -49,7 +46,6 @@ class PostDetailTest(TestCase):
             content='Test description',
             image=SimpleUploadedFile('test_post_image.jpg', b'Image content')
         )
-        self.Post.tag.add(self.Tag)
         self.Comment = Comment.objects.create(
             user_name='Test name',
             text='Test message',
@@ -69,8 +65,6 @@ class PostDetailTest(TestCase):
     def test_post_detail_view_template(self):
         self.assertTemplateUsed(self.response, 'blog/post-detail.html')
 
-    def test_post_detail_content_tag(self):
-        self.assertContains(self.response, self.Tag)
 
     def test_post_detail_content_post(self):
         self.assertContains(self.response, self.Post.title)
@@ -87,30 +81,18 @@ class PostDetailTest(TestCase):
         self.assertContains(self.response, expected_date)
 
 
-class TagModelTest(TestCase):
-    def setUp(self):
-        self.tag = Tag.objects.create(
-            caption = 'Test caption'
-        )
-
-    def test_tag_model(self):
-        self.assertTrue(isinstance(self.tag, Tag))
-        self.assertTrue(self.tag.caption, 'Test caption')
 
 
 class PostModelTest(TestCase):
     def setUp(self):
-        self.tag = Tag.objects.create(
-            caption='Test caption'
-        )
-        self.post = Post.objects.create(
+               self.post = Post.objects.create(
             title='Test title',
             excerpt='Test excerpt',
             date=date.today().strftime('%d.%m.%Y'),
             slug='test-title',
             content='Test content',
         )
-        self.post.tag.add(self.tag)
+
 
     def test_post_model(self):
         self.assertTrue(isinstance(self.post, Post))
@@ -119,14 +101,11 @@ class PostModelTest(TestCase):
         self.assertTrue(self.post.date, date.today().strftime('%d.%m.%Y'))
         self.assertTrue(self.post.slug, 'test-title')
         self.assertTrue(self.post.content, 'Test content')
-        self.assertTrue(self.post.tag, self.tag)
 
 
 class CommentModelTest(TestCase):
     def setUp(self):
-        self.tag = Tag.objects.create(
-            caption='Test caption'
-        )
+
         self.post = Post.objects.create(
             title='Test title',
             excerpt='Test excerpt',
@@ -134,7 +113,6 @@ class CommentModelTest(TestCase):
             slug='test-title',
             content='Test content',
         )
-        self.post.tag.add(self.tag)
         self.comment = Comment.objects.create(
             user_name='Test username',
             user_email='test@test.com',

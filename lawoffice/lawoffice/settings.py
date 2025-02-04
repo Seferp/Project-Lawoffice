@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'my_site',
     'shop',
     'blog',
+
+    'taggit',
 ]
 
 MIDDLEWARE = [

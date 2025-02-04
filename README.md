@@ -45,3 +45,7 @@ The posts have been added on admin panel.
 
 We can add tags which are in another model and they are conncected to model Post with relation many-to-many.
 All posts are displayed in blog view. On the main site we can see three the last added posts. 
+
+Visitor can comment posts. Under post section there is form for adding comments. All posts are saved in the database.
+
+![image](https://github.com/Seferp/Project-Lawoffice/assets/111074557/5b1e01a1-59a0-4a63-8db2-9bac7b0ebfa5)
